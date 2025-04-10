@@ -3,10 +3,10 @@
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
+import { Fade, Flex, Line, ToggleButton, Icon, Switch } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
-import { routes, display } from "@/app/resources";
+import { routes, display, style } from "@/app/resources";
 import { person, home, about, blog } from "@/app/resources/content";
 
 type TimeDisplayProps = {
@@ -44,10 +44,32 @@ export default TimeDisplay;
 
 export const Header = () => {
   const pathname = usePathname() ?? "";
+  const [isDarkMode, setIsDarkMode] = useState(style.theme === "dark");
+
+  useEffect(() => {
+    // Update theme on component mount and when theme changes
+    const root = document.documentElement;
+    root.setAttribute("data-theme", isDarkMode ? "dark" : "light");
+    
+    // Save user preference to localStorage
+    localStorage.setItem("theme-preference", isDarkMode ? "dark" : "light");
+  }, [isDarkMode]);
+  
+  // Check for saved user preference on component mount
+  useEffect(() => {
+    const savedTheme = localStorage.getItem("theme-preference");
+    if (savedTheme) {
+      setIsDarkMode(savedTheme === "dark");
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    setIsDarkMode(prev => !prev);
+  };
 
   return (
     <>      <Fade hide="s" fillWidth position="fixed" height="100" zIndex={9} />
-      <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="100" zIndex={9} />      <Flex
+      <Fade show="s" fillWidth position="fixed" bottom="0" to="top" height="100" zIndex={9} /><Flex
         fitHeight
         className={styles.position}
         as="header"
@@ -84,8 +106,7 @@ export const Header = () => {
                     href="/about"
                     selected={pathname === "/about"}
                   />
-                </>
-              )}
+                </>              )}
               {routes["/blog"] && (
                 <>
                   <ToggleButton
@@ -103,6 +124,22 @@ export const Header = () => {
                   />
                 </>
               )}
+              <Line vert maxHeight="24" />
+              <Flex gap="8" horizontal="center" vertical="center" className="s-flex-hide">
+                <Icon name={isDarkMode ? "moon" : "sun"} size="s" onBackground="neutral-weak" />
+                <Switch
+                  isChecked={isDarkMode}
+                  onToggle={toggleTheme}
+                  ariaLabel="Toggle dark mode"
+                />
+              </Flex>
+              <Flex className="s-flex-show">
+                <ToggleButton 
+                  prefixIcon={isDarkMode ? "moon" : "sun"}
+                  selected={false}
+                  onClick={toggleTheme}
+                />
+              </Flex>
             </Flex>          </Flex>
         </Flex>
       </Flex>
