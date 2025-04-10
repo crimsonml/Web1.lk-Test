@@ -2,7 +2,7 @@
     transition: var(--transition-micro-medium);
 
     &:hover {
-        transform: translateX(var(--static-space-4));
+        transform: translateX(calc(-1 * var(--static-space-4)));
     }
 }
 
@@ -23,5 +23,144 @@
 
     .blockAlign {
         align-self: center;
+    }
+}
+
+.tocContainer {
+    position: relative;
+    z-index: 100;
+}
+
+.toc {
+    padding: var(--static-space-16) var(--static-space-12); // Reduced padding
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    border-radius: 16px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.15),
+        0 4px 16px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    max-width: 220px; // Reduced from 280px to 220px
+    margin-right: 16px; // Reduced from 24px to 16px
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: floatIn 0.6s ease-out forwards;
+    overflow: hidden;
+    max-height: 80vh;
+}
+
+@keyframes floatIn {
+    from {
+        opacity: 0;
+        transform: translateY(-50%) translateX(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+    }
+}
+
+.tocLink {
+    position: relative;
+    transition: all 0.25s ease;
+    padding: var(--static-space-5) var(--static-space-6); // Reduced padding
+    border-radius: 8px;
+    margin-bottom: var(--static-space-1); // Reduced margin
+
+    &:hover {
+        transform: translateX(-2px);
+        background-color: rgba(255, 255, 255, 0.06);
+    }
+
+    &.active {
+        background-color: rgba(255, 255, 255, 0.08);
+        transform: translateX(-2px);
+    }
+}
+
+.tocLine {
+    transition: all 0.3s ease;
+    opacity: 0.7;
+}
+
+.tocLink.active .tocLine {
+    opacity: 1;
+}
+
+.subItemsContainer {
+    display: flex;
+    flex-direction: column;
+    margin-left: var(--static-space-10); // Reduced from 12
+    padding-left: var(--static-space-3); // Reduced from 4
+    border-left: 1px solid rgba(255, 255, 255, 0.08);
+    margin-bottom: var(--static-space-6); // Reduced from 8
+}
+
+.tocSubLink {
+    position: relative;
+    transition: all 0.2s ease;
+    padding: var(--static-space-3) var(--static-space-6); // Reduced padding
+    border-radius: 6px;
+    margin-bottom: var(--static-space-1);
+    
+    &:hover {
+        transform: translateX(-2px);
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+
+    &.active {
+        background-color: rgba(255, 255, 255, 0.06);
+    }
+}
+
+.mobileMenuButton {
+    display: none;
+}
+
+.tocMobileToggle {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .toc {
+        transform: translateX(calc(100% + 40px)) translateY(-50%);
+        right: 0;
+        position: fixed;
+        border-radius: 16px;
+        max-height: 70vh;
+        overflow-y: auto;
+        margin-right: 0;
+        max-width: 200px; // Even smaller on mobile
+        
+        body.toc-mobile-expanded & {
+            transform: translateX(0) translateY(-50%);
+        }
+    }
+    
+    .mobileMenuButton {
+        display: block;
+        position: fixed;
+        right: 0;
+        top: 120px;
+        z-index: 99;
+    }
+    
+    .tocMobileToggle {
+        display: flex;
+        transform: translateX(-16px) rotate(-90deg);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 20px 20px 0 0;
+        padding: var(--static-space-8) var(--static-space-16);
+        transition: all 0.3s ease;
+        
+        &:hover {
+            background: rgba(255, 255, 255, 0.12);
+        }
+        
+        body.toc-mobile-expanded & {
+            background: var(--color-background-brand-medium);
+        }
     }
 }
