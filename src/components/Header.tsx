@@ -125,7 +125,13 @@ export const Header = () => {
                 </>
               )}
               <Line vert maxHeight="24" />
-              <Flex gap="8" horizontal="center" vertical="center" className="s-flex-hide">
+              {/* Desktop dark mode toggle */}
+              <Flex 
+                gap="8" 
+                horizontal="center" 
+                vertical="center" 
+                style={{ display: 'var(--display-s-hide, flex)' }}
+              >
                 <Icon name={isDarkMode ? "moon" : "sun"} size="s" onBackground="neutral-weak" />
                 <Switch
                   isChecked={isDarkMode}
@@ -133,11 +139,19 @@ export const Header = () => {
                   ariaLabel="Toggle dark mode"
                 />
               </Flex>
-              <Flex className="s-flex-show">
+              
+              {/* Mobile dark mode toggle - ensure visibility */}
+              <Flex style={{ display: 'var(--display-s-show, none)' }}>
                 <ToggleButton 
                   prefixIcon={isDarkMode ? "moon" : "sun"}
                   selected={false}
                   onClick={toggleTheme}
+                  aria-label="Toggle dark mode"
+                  style={{ 
+                    opacity: 1,
+                    visibility: 'visible',
+                    display: 'flex'
+                  }}
                 />
               </Flex>
             </Flex>          </Flex>

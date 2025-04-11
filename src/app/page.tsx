@@ -15,6 +15,7 @@ import {
   SmartLink 
 } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
+import { ServiceCard } from "@/components/services/ServiceCard";
 
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
@@ -101,42 +102,133 @@ export default function Home() {
 
       {/* USP Section */}
       <RevealFx translateY="16" delay={0.6}>
-        <Flex fillWidth paddingY="l" radius="m" background="surface" border="neutral-medium">
-          <Heading as="h2" variant="heading-strong-l" align="center">
-            Enterprise-grade web solutions for growth
-          </Heading>
+        <Flex fillWidth paddingY="l" radius="m" background="surface" border="neutral-medium" horizontal="center">
+          <Flex direction="column" gap="4" align="center">
+            <Heading 
+              as="h2" 
+              variant="display-strong-s" 
+              onBackground="brand-strong" 
+              paddingBottom="2"
+              align="center"
+            >
+              <Text as="span" variant="display-strong-s" onBackground="neutral-strong">Enterprise</Text>
+              <Text as="span" variant="display-default-s" onBackground="brand-medium">-caliber</Text>
+              <Text as="span"> solutions </Text>
+              <Text as="span" variant="display-strong-s" onBackground="accent-strong">for digital growth</Text>
+            </Heading>
+            <Text variant="body-default-m" onBackground="neutral-medium" align="center" style={{ maxWidth: "600px" }}>
+              Building remarkable web experiences that drive business success
+            </Text>
+          </Flex>
         </Flex>
       </RevealFx>
       
       {/* Services Section */}
-      <Column fillWidth gap="m">
-        <RevealFx translateY="8" delay={0.2}>
-          <Heading as="h2" variant="display-strong-s" paddingBottom="m">
-            Our Services
-          </Heading>
-          <Grid columns="2" tabletColumns="2" mobileColumns="1" gap="16">
-            {home.services.map((service, index) => (
-              <RevealFx key={service.title} translateY="8" delay={0.2 + index * 0.1}>                <SmartLink href={service.link} unstyled>
-                  <Card
-                    shadow="l"
-                    padding="l"
-                  >
-                    <Flex direction="column" gap="12">
-                      <Flex vertical="center" gap="8">
-                        <Icon name={service.icon} size="l" onBackground="brand-medium" />
-                        <Text variant="heading-strong-m">{service.title}</Text>
-                      </Flex>
-                      <Text variant="body-default-m" wrap="balance">
-                        {service.description}
-                      </Text>
-                    </Flex>
-                  </Card>
-                </SmartLink>
-              </RevealFx>
-            ))}
-          </Grid>
-        </RevealFx>
-      </Column>
+      <RevealFx translateY="12" delay={0.2}>
+        <Flex 
+          fillWidth 
+          direction="column"
+          radius="xl"
+          background="surface" 
+          border="neutral-weak"
+          shadow="m"
+          style={{ 
+            marginTop: "var(--spacing-xl)",
+            marginBottom: "var(--spacing-xl)",
+            overflow: "hidden",
+            position: "relative"
+          }}
+        >
+          {/* Background accent element */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "8px",
+            background: "linear-gradient(90deg, var(--color-brand-medium) 0%, var(--color-accent-medium) 100%)",
+            zIndex: 1
+          }}></div>
+          
+          {/* Services Header - Centered & Symmetrical */}
+          <Flex 
+            direction="column" 
+            horizontal="center" 
+            align="center" 
+            paddingTop="xl"
+            paddingBottom="m"
+            paddingX="xl"
+            fillWidth
+            style={{ 
+              background: "var(--color-surface-strong)",
+              borderBottom: "1px solid var(--color-neutral-weak)"
+            }}
+          >
+            <Text 
+              variant="label-strong-s" 
+              onBackground="brand-medium" 
+              marginBottom="s"
+              style={{ letterSpacing: "0.1em" }}
+            >
+              WHAT WE OFFER
+            </Text>
+            <Heading 
+              as="h2" 
+              variant="display-strong-s" 
+              paddingBottom="m" 
+              align="center"
+              style={{ position: "relative" }}
+            >
+              Our Services
+              <div style={{ 
+                position: "absolute", 
+                bottom: "0", 
+                left: "50%", 
+                transform: "translateX(-50%)",
+                width: "60px", 
+                height: "3px", 
+                background: "var(--color-brand-medium)" 
+              }}></div>
+            </Heading>
+            <Text 
+              variant="body-default-m" 
+              onBackground="neutral-medium" 
+              align="center"
+              style={{ maxWidth: "600px" }}
+            >
+              Customized technology solutions designed specifically for your industry and business needs
+            </Text>
+          </Flex>
+        
+          {/* Services Cards - Connected with heading */}
+          <Flex 
+            fillWidth 
+            direction="column" 
+            align="center"
+            paddingY="l"
+            paddingX="m"
+            background="surface-weak"
+          >
+            <Grid 
+              columns="2" 
+              tabletColumns="2" 
+              mobileColumns="1" 
+              gap="24" 
+              style={{ 
+                width: "100%",
+                maxWidth: "900px",
+                margin: "0 auto"
+              }}
+            >
+              {home.services.map((service, index) => (
+                <RevealFx key={service.title} translateY="8" delay={0.2 + index * 0.1}>
+                  <ServiceCard service={service} />
+                </RevealFx>
+              ))}
+            </Grid>
+          </Flex>
+        </Flex>
+      </RevealFx>
       
       {/* Case Studies Section */}
       <Column fillWidth gap="m">
