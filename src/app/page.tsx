@@ -73,33 +73,233 @@ export default function Home() {
           }),
         }}
       />
-      {/* Hero Section */}
-      <Column fillWidth paddingY="l" gap="m">
-        <Column maxWidth="s">
-          <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="m">
-            <Heading wrap="balance" variant="display-strong-l">
-              {home.headline}
-            </Heading>
+      {/* Hero Section - Elegantly Redesigned */}
+      <Flex 
+        fillWidth 
+        style={{ 
+          position: "relative",
+          overflow: "hidden",
+          marginTop: "var(--spacing-l)",
+          marginBottom: "var(--spacing-xxl)",
+          borderRadius: "20px",
+        }}
+      >
+        {/* Background with subtle gradient and pattern */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: "linear-gradient(135deg, #2B3A67 0%, #3AB4F2 200%)",
+          opacity: 0.05,
+          zIndex: -2,
+        }}></div>
+        
+        {/* Subtle grid pattern overlay */}
+        <div style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          backgroundImage: `
+            linear-gradient(#2B3A67 1px, transparent 1px),
+            linear-gradient(90deg, #2B3A67 1px, transparent 1px)
+          `,
+          backgroundSize: '40px 40px',
+          opacity: 0.03,
+          zIndex: -1,
+        }}></div>
+        
+        {/* Decorative circles */}
+        <div style={{
+          position: "absolute",
+          top: "-100px",
+          right: "-100px",
+          width: "300px",
+          height: "300px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(58, 180, 242, 0.1) 0%, rgba(58, 180, 242, 0) 70%)",
+          zIndex: -1,
+        }}></div>
+        <div style={{
+          position: "absolute",
+          bottom: "-80px",
+          left: "10%",
+          width: "200px",
+          height: "200px",
+          borderRadius: "50%",
+          background: "radial-gradient(circle, rgba(43, 58, 103, 0.1) 0%, rgba(43, 58, 103, 0) 60%)",
+          zIndex: -1,
+        }}></div>
+        
+        <Flex 
+          direction="column"
+          gap="xl"
+          paddingY="xxl"
+          paddingX={{ base: "l", tablet: "xl" }}
+          style={{
+            maxWidth: "1200px",
+            margin: "0 auto",
+          }}
+        >
+          <Flex
+            direction="column"
+            gap="xl"
+            style={{ 
+              maxWidth: "950px", 
+              margin: "0 auto",
+              textAlign: "center",
+            }}
+          >
+            {/* Decorative element */}
+            <RevealFx translateY="4">
+              <div style={{
+                height: "3px",
+                width: "120px",
+                margin: "0 auto",
+                background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
+                marginBottom: "var(--spacing-s)",
+              }}></div>
+            </RevealFx>
+            
+            {/* Main headline with enhanced typography */}
+            <RevealFx translateY="4" delay={0.1}>
+              <Heading 
+                wrap="balance" 
+                variant="display-strong-l" 
+                style={{
+                  fontSize: "clamp(2.5rem, 6vw, 3.75rem)",
+                  lineHeight: 1.1,
+                  letterSpacing: "-0.01em",
+                  background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  padding: "0.25em 0",
+                }}
+              >
+                Transforming Businesses with Web Solutions
+              </Heading>
+            </RevealFx>
+            
+            {/* Subheading with improved typography */}
+            <RevealFx translateY="4" delay={0.2}>
+              <Text 
+                wrap="balance" 
+                variant="heading-default-l"
+                style={{
+                  fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+                  lineHeight: 1.6,
+                  color: "var(--color-neutral-medium)",
+                  maxWidth: "800px",
+                  margin: "0 auto",
+                }}
+              >
+                We're <span style={{ color: "#3AB4F2", fontWeight: 600 }}>Web1.LK</span>, a premier provider of{" "}
+                <span style={{ 
+                  position: "relative", 
+                  fontWeight: 600, 
+                  color: "var(--color-neutral-strong)"
+                }}>
+                  enterprise-grade
+                  <span style={{
+                    position: "absolute",
+                    left: 0,
+                    right: 0,
+                    bottom: "2px",
+                    height: "6px",
+                    background: "rgba(58, 180, 242, 0.2)",
+                    zIndex: -1,
+                    borderRadius: "3px",
+                  }}></span>
+                </span>{" "}
+                web solutions helping businesses achieve sustainable growth through digital transformation.
+              </Text>
+            </RevealFx>
+            
+            {/* Visual separation element */}
+            <RevealFx translateY="4" delay={0.3}>
+              <Flex horizontal="center">
+                <div style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "12px",
+                  margin: "var(--spacing-m) 0",
+                }}>
+                  <div style={{ height: "4px", width: "4px", borderRadius: "50%", background: "#3AB4F2" }}></div>
+                  <div style={{ height: "4px", width: "24px", borderRadius: "2px", background: "#3AB4F2" }}></div>
+                  <div style={{ height: "4px", width: "4px", borderRadius: "50%", background: "#3AB4F2" }}></div>
+                </div>
+              </Flex>
+            </RevealFx>
+  
+            {/* CTA button - kept but visually enhanced */}
+            <RevealFx translateY="4" delay={0.4}>
+              <Flex horizontal="center" marginTop="m">
+                <Button
+                  id="consultation"
+                  data-border="rounded"
+                  href={home.cta.link}
+                  variant="primary"
+                  size="l"
+                  arrowIcon
+                  style={{
+                    background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
+                    border: "none",
+                    padding: "14px 32px",
+                    borderRadius: "12px",
+                    boxShadow: "0 8px 24px rgba(58, 180, 242, 0.2)",
+                    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                  data-hover-transform="translateY(-2px)"
+                  data-hover-shadow="0 12px 28px rgba(58, 180, 242, 0.3)"
+                >
+                  {home.cta.label}
+                </Button>
+              </Flex>
+            </RevealFx>
+          </Flex>
+          
+          {/* Visual features - abstract shapes */}
+          <RevealFx translateY="4" delay={0.5}>
+            <Flex horizontal="center" marginTop="l">
+              <div style={{
+                display: "flex",
+                justifyContent: "center",
+                gap: "clamp(20px, 5vw, 80px)",
+                width: "100%",
+                maxWidth: "800px",
+              }}>
+                {[
+                  { bg: "#2B3A67", icon: "code" },
+                  { bg: "linear-gradient(90deg, #2B3A67, #3AB4F2)", icon: "shoppingCart" },
+                  { bg: "#3AB4F2", icon: "cloud" },
+                ].map((item, i) => (
+                  <div key={i} style={{
+                    width: "clamp(60px, 8vw, 90px)",
+                    height: "clamp(60px, 8vw, 90px)",
+                    borderRadius: "20px",
+                    background: item.bg,
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    boxShadow: "0 15px 30px rgba(0,0,0,0.08)",
+                    transform: `rotate(${(i-1) * 5}deg)`,
+                  }}>
+                    <Icon 
+                      name={item.icon}
+                      size="l" 
+                      onBackground="surface-strong"
+                      style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))" }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </Flex>
           </RevealFx>
-          <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="m">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              {home.subline}
-            </Text>
-          </RevealFx>
-          <RevealFx translateY="12" delay={0.4} horizontal="start">
-            <Button
-              id="consultation"
-              data-border="rounded"
-              href={home.cta.link}
-              variant="primary"
-              size="m"
-              arrowIcon
-            >
-              {home.cta.label}
-            </Button>
-          </RevealFx>
-        </Column>
-      </Column>
+        </Flex>
+      </Flex>
 
       {/* USP Section */}
       <RevealFx translateY="16" delay={0.6}>

@@ -7,7 +7,7 @@ import classNames from "classnames";
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style } from "@/app/resources";
 
-import { Inter } from "next/font/google";
+import { Inter, Poppins } from "next/font/google";
 import { Source_Code_Pro } from "next/font/google";
 
 import { person, home } from "@/app/resources/content";
@@ -67,13 +67,13 @@ type FontConfig = {
   variable: string;
 };
 
-// Using Inter as the sole font family for a consistent corporate look
-const secondary = Inter({
+const secondary = Poppins({
   variable: "--font-secondary",
   weight: ["400", "500", "600", "700"],
   subsets: ["latin"],
   display: "swap",
 });
+
 const tertiary = Inter({
   variable: "--font-tertiary",
   weight: ["400", "500", "600", "700"],
