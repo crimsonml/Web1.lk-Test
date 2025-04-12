@@ -12,7 +12,8 @@ import {
   Grid, 
   Column, 
   Scroller,
-  SmartLink 
+  SmartLink,
+  Badge
 } from "@/once-ui/components";
 import { Projects } from "@/components/work/Projects";
 import { ServiceCard } from "@/components/services/ServiceCard";
@@ -243,7 +244,8 @@ export default function Home() {
             marginTop: "var(--spacing-xl)",
             marginBottom: "var(--spacing-xl)",
             overflow: "hidden",
-            position: "relative"
+            position: "relative",
+            borderRadius: "24px", /* Ensuring consistent rounding */
           }}
         >
           {/* Background accent element with animation */}
@@ -256,6 +258,8 @@ export default function Home() {
             background: "linear-gradient(90deg, var(--color-accent-medium) 0%, var(--color-brand-medium) 100%)",
             zIndex: 1,
             animation: "pulse 3s infinite alternate",
+            borderTopLeftRadius: "24px",
+            borderTopRightRadius: "24px",
           }}></div>
           
           {/* Case Studies Header */}
@@ -269,7 +273,9 @@ export default function Home() {
             fillWidth
             style={{ 
               background: "var(--color-surface-strong)",
-              borderBottom: "1px solid var(--color-neutral-weak)"
+              borderBottom: "1px solid var(--color-neutral-weak)",
+              borderTopLeftRadius: "24px",
+              borderTopRightRadius: "24px",
             }}
           >
             <Text 
@@ -323,6 +329,10 @@ export default function Home() {
             paddingY="xl"
             paddingX="m"
             background="surface-weak"
+            style={{
+              borderBottomLeftRadius: "24px",
+              borderBottomRightRadius: "24px",
+            }}
           >
             <Grid 
               columns="2" 
@@ -345,7 +355,7 @@ export default function Home() {
                         cursor: "pointer",
                         overflow: "hidden",
                         height: "100%",
-                        borderRadius: "18px",
+                        borderRadius: "24px", /* Increased border radius for more rounded edges */
                         transform: "translateY(0)",
                       }}
                       data-hover-shadow="xl"
@@ -356,8 +366,8 @@ export default function Home() {
                         <div style={{
                           position: "relative",
                           overflow: "hidden",
-                          borderTopLeftRadius: "18px",
-                          borderTopRightRadius: "18px",
+                          borderTopLeftRadius: "24px", /* Consistent rounding with card */
+                          borderTopRightRadius: "24px", /* Consistent rounding with card */
                         }}>
                           <div 
                             className="case-study-image"
@@ -369,8 +379,8 @@ export default function Home() {
                               height: '260px',
                               transition: 'transform 0.8s ease',
                               transformOrigin: 'center',
-                              borderTopLeftRadius: "18px",
-                              borderTopRightRadius: "18px",
+                              borderTopLeftRadius: "24px", /* Consistent rounding with card */
+                              borderTopRightRadius: "24px", /* Consistent rounding with card */
                               filter: "brightness(1)",
                             }}
                           />
@@ -383,8 +393,8 @@ export default function Home() {
                             right: 0,
                             bottom: 0,
                             background: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%)",
-                            borderTopLeftRadius: "18px",
-                            borderTopRightRadius: "18px",
+                            borderTopLeftRadius: "24px", /* Consistent rounding with card */
+                            borderTopRightRadius: "24px", /* Consistent rounding with card */
                           }}/>
                           
                           {/* Client badge with rounded corners */}
@@ -396,7 +406,7 @@ export default function Home() {
                               right: "16px",
                               background: "var(--color-brand-strong)",
                               padding: "8px 16px",
-                              borderRadius: "30px",
+                              borderRadius: "30px", /* Very rounded pill shape */
                               boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
                               transform: "translateY(0)",
                               transition: "transform 0.3s ease",
@@ -409,7 +419,7 @@ export default function Home() {
                         </div>
                       )}
                       
-                      <Flex direction="column" gap="16" padding="l">
+                      <Flex direction="column" gap="16" padding="l" style={{ borderRadius: "24px" }}>
                         <Flex horizontal="space-between" vertical="center" gap="8">
                           <Text 
                             variant="heading-strong-m" 
@@ -428,6 +438,9 @@ export default function Home() {
                             className="case-study-arrow"
                             style={{ 
                               transition: "transform 0.3s ease",
+                              background: "var(--color-brand-alpha-weak)",
+                              padding: "6px",
+                              borderRadius: "50%", /* Fully rounded icon background */
                             }}
                           />
                         </Flex>
@@ -451,6 +464,7 @@ export default function Home() {
                               style={{
                                 minWidth: "70px",
                                 boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
+                                borderRadius: "40px", /* Extra rounded for metrics badges */
                               }}
                             >
                               <Text 
@@ -469,46 +483,456 @@ export default function Home() {
                 </RevealFx>
               ))}
             </Grid>
+            
           </Flex>
         </Flex>
       </RevealFx>
 
-      {/* Client Logos Section */}
-      <Column fillWidth gap="m">
-        <Heading as="h2" variant="display-strong-s" paddingBottom="m">
-          Trusted By
-        </Heading>
-        <RevealFx translateY="8" delay={0.2}>
+      {/* Trusted By Section - Redesigned */}
+      <RevealFx translateY="12" delay={0.2}>
+        <Flex 
+          fillWidth 
+          direction="column"
+          radius="xl"
+          background="surface" 
+          border="neutral-weak"
+          shadow="m"
+          style={{ 
+            marginTop: "var(--spacing-xl)",
+            marginBottom: "var(--spacing-xl)",
+            overflow: "hidden",
+            position: "relative",
+            borderRadius: "28px", /* Larger rounded corners throughout */
+          }}
+        >
+          {/* Background accent element with animation */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "10px", /* Slightly thicker accent bar */
+            background: "linear-gradient(90deg, var(--color-brand-medium) 0%, var(--color-accent-medium) 100%)",
+            zIndex: 1,
+            animation: "pulse 3s infinite alternate",
+            borderTopLeftRadius: "28px",
+            borderTopRightRadius: "28px",
+          }}></div>
+          
+          {/* Trusted By Header */}
+          <Flex 
+            direction="column" 
+            horizontal="center" 
+            align="center" 
+            paddingTop="xl"
+            paddingBottom="m"
+            paddingX="xl"
+            fillWidth
+            style={{ 
+              background: "var(--color-surface-strong)",
+              borderBottom: "1px solid var(--color-neutral-weak)",
+              borderTopLeftRadius: "28px",
+              borderTopRightRadius: "28px",
+            }}
+          >
+            <Text 
+              variant="label-strong-s" 
+              onBackground="brand-medium" 
+              marginBottom="s"
+              style={{ letterSpacing: "0.1em", animation: "fadeInUp 0.8s ease-out" }}
+            >
+              OUR VALUED CLIENTS
+            </Text>
+            <Heading 
+              as="h2" 
+              variant="display-strong-s" 
+              paddingBottom="m" 
+              align="center"
+              style={{ 
+                position: "relative",
+                animation: "fadeInUp 0.8s ease-out 0.2s both"
+              }}
+            >
+              Trusted By
+              <div style={{ 
+                position: "absolute", 
+                bottom: "0", 
+                left: "50%", 
+                transform: "translateX(-50%)",
+                width: "80px", /* Slightly wider underline */
+                height: "4px", /* Slightly thicker underline */
+                background: "linear-gradient(90deg, var(--color-brand-medium) 0%, var(--color-accent-medium) 100%)",
+                animation: "float 4s ease-in-out infinite",
+                borderRadius: "2px", /* Rounded corners on the underline */
+              }}></div>
+            </Heading>
+            <Text 
+              variant="body-default-m" 
+              onBackground="neutral-medium" 
+              align="center"
+              style={{ 
+                maxWidth: "600px",
+                animation: "fadeInUp 0.8s ease-out 0.4s both"
+              }}
+            >
+              Industry leaders who rely on our expertise to transform their digital presence
+            </Text>
+          </Flex>
+        
+          {/* Client Logos in 2x2 Grid */}
           <Flex 
             fillWidth 
-            paddingY="l" 
-            paddingX="m" 
-            radius="m" 
-            background="surface" 
-            border="neutral-medium"
-            gap="32"
-            wrap
-            horizontal="center"
+            direction="column" 
+            align="center"
+            paddingY="xl"
+            paddingX="l"
+            background="surface-weak"
+            style={{
+              borderBottomLeftRadius: "28px",
+              borderBottomRightRadius: "28px",
+              background: "radial-gradient(circle at top right, var(--color-surface-weak) 0%, var(--color-surface) 100%)",
+            }}
           >
-            {home.clients.map((client, index) => (
-              <Flex 
-                key={client.name} 
-                width={120} 
-                height={60}
-                radius="m"
-                vertical="center"
-                horizontal="center"
-              >
-                {client.logo ? (
-                  <img src={client.logo} alt={client.name} style={{ maxWidth: "100%", maxHeight: "100%" }} />
-                ) : (
-                  <Text variant="heading-strong-m">{client.name}</Text>
-                )}
+            <Flex 
+              direction="column"
+              gap="40" /* Increased gap between rows */
+              style={{ 
+                width: "100%",
+                maxWidth: "1000px", /* Slightly wider container */
+                margin: "0 auto"
+              }}
+            >
+              {/* First Row - 2 client logos */}
+              <Flex horizontal="center" gap="40"> {/* Increased gap between columns */}
+                {[
+                  { name: "TechCorp", industry: "Technology", icon: "code" },
+                  { name: "FinanceHub", industry: "Finance", icon: "shoppingCart" },
+                ].map((client, index) => (
+                  <RevealFx key={client.name} translateY="8" delay={0.2 + index * 0.1}>
+                    <Card
+                      shadow="l" /* Deeper shadow for more dimension */
+                      style={{
+                        transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                        overflow: "hidden",
+                        width: "360px", /* Wider cards */
+                        height: "240px", /* Taller cards */
+                        borderRadius: "28px", 
+                        transform: "translateY(0)",
+                        border: "1px solid var(--color-neutral-weak)",
+                      }}
+                      data-hover-shadow="xl"
+                      data-hover-border="brand-medium"
+                      data-hover-transform="translateY(-8px) scale(1.02)" /* Add subtle scale effect on hover */
+                    >
+                      <Flex
+                        direction="column"
+                        fillWidth
+                        fillHeight
+                        style={{
+                          position: "relative",
+                          overflow: "hidden",
+                          borderRadius: "28px",
+                        }}
+                      >
+                        {/* Client logo display area with gradient background */}
+                        <Flex
+                          fillWidth
+                          fillHeight
+                          vertical="center"
+                          horizontal="center"
+                          style={{
+                            background: "linear-gradient(135deg, var(--color-brand-alpha-weak) 0%, var(--color-accent-alpha-weak) 100%)",
+                            padding: "24px",
+                            position: "relative",
+                          }}
+                        >
+                          {/* Decorative background elements */}
+                          <div style={{
+                            position: "absolute",
+                            top: "10%",
+                            right: "10%",
+                            width: "120px",
+                            height: "120px",
+                            borderRadius: "60px",
+                            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)",
+                            opacity: 0.6,
+                          }}></div>
+                          <div style={{
+                            position: "absolute",
+                            bottom: "15%",
+                            left: "10%",
+                            width: "80px",
+                            height: "80px",
+                            borderRadius: "40px",
+                            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)",
+                            opacity: 0.4,
+                          }}></div>
+                          
+                          {/* Client logo and details */}
+                          <Flex 
+                            direction="column" 
+                            vertical="center" 
+                            horizontal="center" 
+                            gap="16" /* Increased gap */
+                          >
+                            {/* Larger logo circle */}
+                            <div className="client-logo" style={{
+                              width: "140px", /* Bigger logo size */
+                              height: "140px", /* Bigger logo size */
+                              borderRadius: "70px", /* Fully rounded */
+                              background: "var(--color-surface)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              boxShadow: "0 12px 28px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.3)",
+                              border: "4px solid rgba(255,255,255,0.2)",
+                              position: "relative",
+                              overflow: "hidden",
+                            }}>
+                              {/* Logo shine effect */}
+                              <div style={{
+                                position: "absolute",
+                                top: "-30%",
+                                left: "-30%",
+                                width: "160%",
+                                height: "80%",
+                                background: "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%)",
+                                transform: "rotate(-15deg)",
+                              }}></div>
+                              
+                              <Flex gap="8" vertical="center" horizontal="center">
+                                <Icon
+                                  name={client.icon}
+                                  size="xl"
+                                  onBackground="brand-strong"
+                                  style={{ 
+                                    marginRight: "4px",
+                                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
+                                  }}
+                                />
+                                <Text 
+                                  variant="heading-strong-xl" 
+                                  onBackground="brand-strong"
+                                  style={{
+                                    animation: "float 4s ease-in-out infinite",
+                                    fontSize: "42px", /* Bigger text */
+                                  }}
+                                >
+                                  {client.name.charAt(0)}
+                                </Text>
+                              </Flex>
+                            </div>
+                            
+                            {/* Company name with enhanced styling */}
+                            <Text 
+                              variant="heading-strong-m"
+                              style={{
+                                background: "linear-gradient(90deg, var(--color-brand-strong) 0%, var(--color-accent-strong) 100%)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                textShadow: "0 2px 10px rgba(0,0,0,0.05)",
+                                fontSize: "1.3rem", /* Slightly bigger font */
+                              }}
+                            >
+                              {client.name}
+                            </Text>
+                            
+                            {/* Enhanced industry badge - bigger with more rounded corners */}
+                            <Badge 
+                              variant="accent" 
+                              size="m"
+                              icon={client.icon}
+                              className="industry-badge"
+                              style={{
+                                borderRadius: "32px", /* Even more rounded corners */
+                                padding: "10px 20px", /* More padding for bigger size */
+                                cursor: "default",
+                                transition: "none", /* Remove transition effects */
+                                position: "relative",
+                                overflow: "hidden",
+                                background: "var(--color-accent-alpha-weak)",
+                                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                                border: "1px solid var(--color-accent-alpha-medium)",
+                                fontSize: "1.1rem", /* Bigger text */
+                              }}
+                            >
+                              {client.industry}
+                            </Badge>
+                          </Flex>
+                        </Flex>
+                      </Flex>
+                    </Card>
+                  </RevealFx>
+                ))}
               </Flex>
-            ))}
+
+              {/* Second Row - 2 client logos */}
+              <Flex horizontal="center" gap="40"> {/* Increased gap between columns */}
+                {[
+                  { name: "HealthPlus", industry: "Healthcare", icon: "globe" },
+                  { name: "RetailGo", industry: "E-commerce", icon: "connection" },
+                ].map((client, index) => (
+                  <RevealFx key={client.name} translateY="8" delay={0.4 + index * 0.1}>
+                    <Card
+                      shadow="l"
+                      style={{
+                        transition: "all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                        overflow: "hidden",
+                        width: "360px", /* Wider cards */
+                        height: "240px", /* Taller cards */
+                        borderRadius: "28px", 
+                        transform: "translateY(0)",
+                        border: "1px solid var(--color-neutral-weak)",
+                      }}
+                      data-hover-shadow="xl"
+                      data-hover-border="accent-medium"
+                      data-hover-transform="translateY(-8px) scale(1.02)" /* Add subtle scale effect on hover */
+                    >
+                      <Flex
+                        direction="column"
+                        fillWidth
+                        fillHeight
+                        style={{
+                          position: "relative",
+                          overflow: "hidden",
+                          borderRadius: "28px",
+                        }}
+                      >
+                        {/* Client logo display area with gradient background */}
+                        <Flex
+                          fillWidth
+                          fillHeight
+                          vertical="center"
+                          horizontal="center"
+                          style={{
+                            background: "linear-gradient(135deg, var(--color-accent-alpha-weak) 0%, var(--color-brand-alpha-weak) 100%)",
+                            padding: "24px",
+                            position: "relative",
+                          }}
+                        >
+                          {/* Decorative background elements */}
+                          <div style={{
+                            position: "absolute",
+                            top: "15%",
+                            left: "10%",
+                            width: "100px",
+                            height: "100px",
+                            borderRadius: "50px",
+                            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)",
+                            opacity: 0.6,
+                          }}></div>
+                          <div style={{
+                            position: "absolute",
+                            bottom: "10%",
+                            right: "10%",
+                            width: "60px",
+                            height: "60px",
+                            borderRadius: "30px",
+                            background: "radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%)",
+                            opacity: 0.4,
+                          }}></div>
+                          
+                          {/* Client logo and details */}
+                          <Flex 
+                            direction="column" 
+                            vertical="center" 
+                            horizontal="center" 
+                            gap="16" /* Increased gap */
+                          >
+                            {/* Larger logo circle */}
+                            <div className="client-logo" style={{
+                              width: "140px", /* Bigger logo size */
+                              height: "140px", /* Bigger logo size */
+                              borderRadius: "70px", /* Fully rounded */
+                              background: "var(--color-surface)",
+                              display: "flex",
+                              alignItems: "center",
+                              justifyContent: "center",
+                              boxShadow: "0 12px 28px rgba(0, 0, 0, 0.15), inset 0 2px 4px rgba(255, 255, 255, 0.3)",
+                              border: "4px solid rgba(255,255,255,0.2)",
+                              position: "relative",
+                              overflow: "hidden",
+                            }}>
+                              {/* Logo shine effect */}
+                              <div style={{
+                                position: "absolute",
+                                top: "-30%",
+                                left: "-30%",
+                                width: "160%",
+                                height: "80%",
+                                background: "linear-gradient(135deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 50%)",
+                                transform: "rotate(-15deg)",
+                              }}></div>
+                              
+                              <Flex gap="8" vertical="center" horizontal="center">
+                                <Icon
+                                  name={client.icon}
+                                  size="xl"
+                                  onBackground="accent-strong"
+                                  style={{ 
+                                    marginRight: "4px",
+                                    filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
+                                  }}
+                                />
+                                <Text 
+                                  variant="heading-strong-xl" 
+                                  onBackground="accent-strong"
+                                  style={{
+                                    animation: "float 4s ease-in-out infinite",
+                                    fontSize: "42px", /* Bigger text */
+                                  }}
+                                >
+                                  {client.name.charAt(0)}
+                                </Text>
+                              </Flex>
+                            </div>
+                            
+                            {/* Company name with enhanced styling */}
+                            <Text 
+                              variant="heading-strong-m"
+                              style={{
+                                background: "linear-gradient(90deg, var(--color-accent-strong) 0%, var(--color-brand-strong) 100%)",
+                                WebkitBackgroundClip: "text",
+                                WebkitTextFillColor: "transparent",
+                                textShadow: "0 2px 10px rgba(0,0,0,0.05)",
+                                fontSize: "1.3rem", /* Slightly bigger font */
+                              }}
+                            >
+                              {client.name}
+                            </Text>
+                            
+                            {/* Enhanced industry badge - bigger with more rounded corners */}
+                            <Badge 
+                              variant="brand" 
+                              size="m"
+                              icon={client.icon}
+                              className="industry-badge"
+                              style={{
+                                borderRadius: "32px", /* Even more rounded corners */
+                                padding: "10px 20px", /* More padding for bigger size */
+                                cursor: "default",
+                                transition: "none", /* Remove transition effects */
+                                position: "relative",
+                                overflow: "hidden",
+                                background: "var(--color-brand-alpha-weak)",
+                                boxShadow: "0 4px 12px rgba(0,0,0,0.08)",
+                                border: "1px solid var(--color-brand-alpha-medium)",
+                                fontSize: "1.1rem", /* Bigger text */
+                              }}
+                            >
+                              {client.industry}
+                            </Badge>
+                          </Flex>
+                        </Flex>
+                      </Flex>
+                    </Card>
+                  </RevealFx>
+                ))}
+              </Flex>
+            </Flex>
           </Flex>
-        </RevealFx>
-      </Column>
+        </Flex>
+      </RevealFx>
 
       {/* Testimonials Section */}
       <Column fillWidth gap="m">

@@ -15,6 +15,17 @@
   to { opacity: 1; transform: translateY(0); }
 }
 
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes gentle-glow {
+  0% { box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
+  50% { box-shadow: 0 0 15px rgba(59, 130, 246, 0.3); }
+  100% { box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); }
+}
+
 /* Case study card styles */
 .case-study-image:hover {
   transform: scale(1.05);
@@ -49,3 +60,11 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
 }
+
+/* Industry badge styles - removed hover animations */
+.industry-badge {
+  position: relative;
+  z-index: 1;
+}
+
+/* Removed hover animations for industry badges */
