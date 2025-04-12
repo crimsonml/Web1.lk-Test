@@ -1,5 +1,6 @@
 import "@/once-ui/styles/index.scss";
 import "@/once-ui/tokens/index.scss";
+import "@/app/styles/global.css"; // Import our global CSS with animations
 
 import classNames from "classnames";
 
