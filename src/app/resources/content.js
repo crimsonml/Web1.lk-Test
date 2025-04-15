@@ -152,13 +152,6 @@ const home = {
       position: "CTO",
       company: "TechCorp",
       image: "/images/avatar.jpg"
-    },
-    {
-      quote: "Our web application has become the cornerstone of our digital strategy thanks to Web1.LK. Patient satisfaction scores have increased by 35% since launch.",
-      author: "Dr. Amali Fernando",
-      position: "CEO",
-      company: "MediCare Group",
-      image: "/images/avatar.jpg"
     }
   ]
 };
