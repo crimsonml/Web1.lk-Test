@@ -312,29 +312,6 @@ export default function Home() {
         </Flex>
       </Flex>
 
-      {/* USP Section */}
-      <RevealFx translateY="16" delay={0.6}>
-        <Flex fillWidth paddingY="l" radius="m" background="surface" border="neutral-medium" horizontal="center">
-          <Flex direction="column" gap="4" align="center">
-            <Heading 
-              as="h2" 
-              variant="display-strong-s" 
-              onBackground="brand-strong" 
-              paddingBottom="2"
-              align="center"
-            >
-              <Text as="span" variant="display-strong-s" onBackground="neutral-strong">Enterprise</Text>
-              <Text as="span" variant="display-default-s" onBackground="brand-medium">-caliber</Text>
-              <Text as="span"> solutions </Text>
-              <Text as="span" variant="display-strong-s" onBackground="accent-strong">for digital growth</Text>
-            </Heading>
-            <Text variant="body-default-m" onBackground="neutral-medium" align="center" style={{ maxWidth: "600px" }}>
-              Building remarkable web experiences that drive business success
-            </Text>
-          </Flex>
-        </Flex>
-      </RevealFx>
-      
       {/* Services Section */}
       <RevealFx translateY="12" delay={0.2}>
         <Flex 
@@ -438,6 +415,29 @@ export default function Home() {
                 </RevealFx>
               ))}
             </Grid>
+          </Flex>
+        </Flex>
+      </RevealFx>
+
+      {/* USP Section - moved below Services Section */}
+      <RevealFx translateY="16" delay={0.6}>
+        <Flex fillWidth paddingY="l" radius="m" background="surface" border="neutral-medium" horizontal="center">
+          <Flex direction="column" gap="4" align="center">
+            <Heading 
+              as="h2" 
+              variant="display-strong-s" 
+              onBackground="brand-strong" 
+              paddingBottom="2"
+              align="center"
+            >
+              <Text as="span" variant="display-strong-s" onBackground="neutral-strong">Enterprise</Text>
+              <Text as="span" variant="display-default-s" onBackground="brand-medium">-caliber</Text>
+              <Text as="span"> solutions </Text>
+              <Text as="span" variant="display-strong-s" onBackground="accent-strong">for digital growth</Text>
+            </Heading>
+            <Text variant="body-default-m" onBackground="neutral-medium" align="center" style={{ maxWidth: "600px" }}>
+              Building remarkable web experiences that drive business success
+            </Text>
           </Flex>
         </Flex>
       </RevealFx>
