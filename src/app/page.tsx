@@ -73,95 +73,98 @@ export default function Home() {
           }),
         }}
       />
-      {/* Hero Section - Elegantly Redesigned */}
+      {/* Hero Section - Modern Professional Redesign */}
       <Flex 
         fillWidth 
         style={{ 
           position: "relative",
           overflow: "hidden",
-          marginTop: "var(--spacing-l)",
+          marginTop: "var(--spacing-xl)",
           marginBottom: "var(--spacing-xxl)",
-          borderRadius: "20px",
+          borderRadius: "24px",
+          border: "1px solid var(--color-neutral-weak)",
+          boxShadow: "0 20px 40px rgba(0,0,0,0.05)",
         }}
       >
-        {/* Background with subtle gradient and pattern */}
+        {/* Clean background with subtle pattern */}
         <div style={{
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: "linear-gradient(135deg, #2B3A67 0%, #3AB4F2 200%)",
-          opacity: 0.05,
+          background: "linear-gradient(135deg, rgba(43, 58, 103, 0.03) 0%, rgba(58, 180, 242, 0.03) 100%)",
           zIndex: -2,
         }}></div>
         
-        {/* Subtle grid pattern overlay */}
+        {/* Refined dot pattern overlay */}
         <div style={{
           position: "absolute",
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          backgroundImage: `
-            linear-gradient(#2B3A67 1px, transparent 1px),
-            linear-gradient(90deg, #2B3A67 1px, transparent 1px)
-          `,
-          backgroundSize: '40px 40px',
+          backgroundImage: `radial-gradient(#3AB4F2 1px, transparent 1px)`,
+          backgroundSize: '30px 30px',
           opacity: 0.03,
           zIndex: -1,
         }}></div>
         
-        {/* Decorative circles */}
+        {/* Elegant border accent */}
         <div style={{
           position: "absolute",
-          top: "-100px",
-          right: "-100px",
-          width: "300px",
-          height: "300px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(58, 180, 242, 0.1) 0%, rgba(58, 180, 242, 0) 70%)",
-          zIndex: -1,
-        }}></div>
-        <div style={{
-          position: "absolute",
-          bottom: "-80px",
-          left: "10%",
-          width: "200px",
-          height: "200px",
-          borderRadius: "50%",
-          background: "radial-gradient(circle, rgba(43, 58, 103, 0.1) 0%, rgba(43, 58, 103, 0) 60%)",
-          zIndex: -1,
+          top: 0,
+          left: 0,
+          right: 0,
+          height: "4px",
+          background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
+          zIndex: 1,
         }}></div>
         
         <Flex 
           direction="column"
           gap="xl"
           paddingY="xxl"
-          paddingX={{ base: "l", tablet: "xl" }}
+          paddingX={{ base: "xl", tablet: "xxl" }}
+          fillWidth
           style={{
             maxWidth: "1200px",
             margin: "0 auto",
+            position: "relative",
+            zIndex: 1,
           }}
         >
           <Flex
             direction="column"
-            gap="xl"
+            gap="l"
             style={{ 
-              maxWidth: "950px", 
+              maxWidth: "900px", 
               margin: "0 auto",
               textAlign: "center",
             }}
           >
-            {/* Decorative element */}
+            {/* Company name with special effect */}
             <RevealFx translateY="4">
-              <div style={{
-                height: "3px",
-                width: "120px",
-                margin: "0 auto",
-                background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
-                marginBottom: "var(--spacing-s)",
-              }}></div>
+              <Flex horizontal="center" vertical="center" gap="s">
+                <Text 
+                  variant="label-strong-l" 
+                  style={{
+                    fontSize: "clamp(1.25rem, 2vw, 1.5rem)",
+                    letterSpacing: "0.05em",
+                    color: "#3AB4F2",
+                    fontWeight: 800,
+                    textTransform: "uppercase",
+                    padding: "8px 16px",
+                    border: "2px solid rgba(58, 180, 242, 0.3)",
+                    borderRadius: "12px",
+                    background: "rgba(58, 180, 242, 0.05)",
+                    boxShadow: "0 4px 16px rgba(58, 180, 242, 0.15)",
+                    animation: "pulse 2s infinite alternate",
+                  }}
+                >
+                  Web1.LK
+                </Text>
+              </Flex>
             </RevealFx>
             
             {/* Main headline with enhanced typography */}
@@ -170,20 +173,22 @@ export default function Home() {
                 wrap="balance" 
                 variant="display-strong-l" 
                 style={{
-                  fontSize: "clamp(2.5rem, 6vw, 3.75rem)",
+                  fontSize: "clamp(2.75rem, 6vw, 4rem)",
                   lineHeight: 1.1,
-                  letterSpacing: "-0.01em",
+                  letterSpacing: "-0.02em",
                   background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
                   WebkitBackgroundClip: "text",
                   WebkitTextFillColor: "transparent",
-                  padding: "0.25em 0",
+                  padding: "0.15em 0",
+                  fontWeight: 800,
+                  textShadow: "0 8px 24px rgba(0,0,0,0.05)",
                 }}
               >
                 Transforming Businesses with Web Solutions
               </Heading>
             </RevealFx>
             
-            {/* Subheading with improved typography */}
+            {/* Refined subheading with clearer typography */}
             <RevealFx translateY="4" delay={0.2}>
               <Text 
                 wrap="balance" 
@@ -194,12 +199,13 @@ export default function Home() {
                   color: "var(--color-neutral-medium)",
                   maxWidth: "800px",
                   margin: "0 auto",
+                  paddingTop: "8px",
                 }}
               >
-                We're <span style={{ color: "#3AB4F2", fontWeight: 600 }}>Web1.LK</span>, a premier provider of{" "}
+                A premier provider of{" "}
                 <span style={{ 
                   position: "relative", 
-                  fontWeight: 600, 
+                  fontWeight: 700, 
                   color: "var(--color-neutral-strong)"
                 }}>
                   enterprise-grade
@@ -208,35 +214,19 @@ export default function Home() {
                     left: 0,
                     right: 0,
                     bottom: "2px",
-                    height: "6px",
-                    background: "rgba(58, 180, 242, 0.2)",
+                    height: "8px",
+                    background: "rgba(58, 180, 242, 0.15)",
                     zIndex: -1,
-                    borderRadius: "3px",
+                    borderRadius: "4px",
                   }}></span>
                 </span>{" "}
-                web solutions helping businesses achieve sustainable growth through digital transformation.
+                web solutions for sustainable business growth through digital transformation.
               </Text>
             </RevealFx>
-            
-            {/* Visual separation element */}
-            <RevealFx translateY="4" delay={0.3}>
-              <Flex horizontal="center">
-                <div style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "12px",
-                  margin: "var(--spacing-m) 0",
-                }}>
-                  <div style={{ height: "4px", width: "4px", borderRadius: "50%", background: "#3AB4F2" }}></div>
-                  <div style={{ height: "4px", width: "24px", borderRadius: "2px", background: "#3AB4F2" }}></div>
-                  <div style={{ height: "4px", width: "4px", borderRadius: "50%", background: "#3AB4F2" }}></div>
-                </div>
-              </Flex>
-            </RevealFx>
   
-            {/* CTA button - kept but visually enhanced */}
-            <RevealFx translateY="4" delay={0.4}>
-              <Flex horizontal="center" marginTop="m">
+            {/* Enhanced CTA button with cleaner styling */}
+            <RevealFx translateY="4" delay={0.3}>
+              <Flex horizontal="center" marginTop="l" marginBottom="m">
                 <Button
                   id="consultation"
                   data-border="rounded"
@@ -247,13 +237,15 @@ export default function Home() {
                   style={{
                     background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
                     border: "none",
-                    padding: "14px 32px",
-                    borderRadius: "12px",
-                    boxShadow: "0 8px 24px rgba(58, 180, 242, 0.2)",
+                    padding: "16px 36px",
+                    borderRadius: "16px",
+                    boxShadow: "0 12px 28px rgba(58, 180, 242, 0.2)",
                     transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                    fontSize: "1.1rem",
+                    fontWeight: 600,
                   }}
                   data-hover-transform="translateY(-2px)"
-                  data-hover-shadow="0 12px 28px rgba(58, 180, 242, 0.3)"
+                  data-hover-shadow="0 16px 32px rgba(58, 180, 242, 0.3)"
                 >
                   {home.cta.label}
                 </Button>
@@ -261,39 +253,58 @@ export default function Home() {
             </RevealFx>
           </Flex>
           
-          {/* Visual features - abstract shapes */}
-          <RevealFx translateY="4" delay={0.5}>
-            <Flex horizontal="center" marginTop="l">
+          {/* Service icons with proper spacing and positioning */}
+          <RevealFx translateY="4" delay={0.4}>
+            <Flex horizontal="center" marginTop="xl">
               <div style={{
                 display: "flex",
                 justifyContent: "center",
-                gap: "clamp(20px, 5vw, 80px)",
+                gap: "clamp(36px, 6vw, 80px)",
                 width: "100%",
                 maxWidth: "800px",
+                position: "relative",
+                padding: "0 20px 20px",
               }}>
                 {[
-                  { bg: "#2B3A67", icon: "code" },
-                  { bg: "linear-gradient(90deg, #2B3A67, #3AB4F2)", icon: "shoppingCart" },
-                  { bg: "#3AB4F2", icon: "cloud" },
+                  { bg: "#2B3A67", icon: "code", label: "Web Apps" },
+                  { bg: "linear-gradient(90deg, #2B3A67, #3AB4F2)", icon: "shoppingCart", label: "POS Systems" },
+                  { bg: "#3AB4F2", icon: "cloud", label: "SaaS Solutions" },
                 ].map((item, i) => (
-                  <div key={i} style={{
-                    width: "clamp(60px, 8vw, 90px)",
-                    height: "clamp(60px, 8vw, 90px)",
-                    borderRadius: "20px",
-                    background: item.bg,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    boxShadow: "0 15px 30px rgba(0,0,0,0.08)",
-                    transform: `rotate(${(i-1) * 5}deg)`,
-                  }}>
-                    <Icon 
-                      name={item.icon}
-                      size="l" 
-                      onBackground="surface-strong"
-                      style={{ filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))" }}
-                    />
-                  </div>
+                  <Flex key={i} direction="column" horizontal="center" gap="s">
+                    <div style={{
+                      width: "clamp(70px, 8vw, 90px)",
+                      height: "clamp(70px, 8vw, 90px)",
+                      borderRadius: "24px",
+                      background: item.bg,
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                      boxShadow: "0 15px 30px rgba(0,0,0,0.1)",
+                      transform: "rotate(0deg)",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      position: "relative",
+                      margin: "15px",
+                    }}>
+                      <Icon 
+                        name={item.icon}
+                        size="l" 
+                        onBackground="surface-strong"
+                        style={{ 
+                          filter: "drop-shadow(0 2px 6px rgba(0,0,0,0.15))",
+                          transform: "scale(1.2)",
+                        }}
+                      />
+                    </div>
+                    <Text 
+                      variant="label-strong-s" 
+                      onBackground="neutral-medium" 
+                      style={{ 
+                        opacity: 0.8,
+                      }}
+                    >
+                      {item.label}
+                    </Text>
+                  </Flex>
                 ))}
               </div>
             </Flex>
