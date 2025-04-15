@@ -255,7 +255,7 @@ export default function Home() {
           
           {/* Service icons with proper spacing and positioning */}
           <RevealFx translateY="4" delay={0.4}>
-            <Flex horizontal="center" marginTop="xl">
+            <Flex horizontal="center" marginTop="extraSmall">
               <div style={{
                 display: "flex",
                 justifyContent: "center",
