@@ -442,7 +442,7 @@ export default function Home() {
         </Flex>
       </RevealFx>
       
-      {/* Case Studies Section */}
+      {/* Case Studies Section - Redesigned for a cleaner, more professional look */}
       <RevealFx translateY="12" delay={0.2}>
         <Flex 
           fillWidth 
@@ -456,34 +456,20 @@ export default function Home() {
             marginBottom: "var(--spacing-xl)",
             overflow: "hidden",
             position: "relative",
-            borderRadius: "24px", /* Ensuring consistent rounding */
+            borderRadius: "24px",
           }}
         >
-          {/* Background accent element with animation */}
-          <div style={{
-            position: "absolute",
-            top: 0,
-            left: 0,
-            width: "100%",
-            height: "8px",
-            background: "linear-gradient(90deg, var(--color-accent-medium) 0%, var(--color-brand-medium) 100%)",
-            zIndex: 1,
-            animation: "pulse 3s infinite alternate",
-            borderTopLeftRadius: "24px",
-            borderTopRightRadius: "24px",
-          }}></div>
-          
-          {/* Case Studies Header */}
+          {/* Refined header section with improved typography */}
           <Flex 
             direction="column" 
             horizontal="center" 
             align="center" 
             paddingTop="xl"
-            paddingBottom="m"
+            paddingBottom="l"
             paddingX="xl"
             fillWidth
             style={{ 
-              background: "var(--color-surface-strong)",
+              background: "var(--color-surface)",
               borderBottom: "1px solid var(--color-neutral-weak)",
               borderTopLeftRadius: "24px",
               borderTopRightRadius: "24px",
@@ -491,9 +477,12 @@ export default function Home() {
           >
             <Text 
               variant="label-strong-s" 
-              onBackground="accent-medium" 
+              onBackground="brand-medium" 
               marginBottom="s"
-              style={{ letterSpacing: "0.1em", animation: "fadeInUp 0.8s ease-out" }}
+              style={{ 
+                letterSpacing: "0.12em", 
+                transform: "translateY(0)",
+              }}
             >
               CLIENT SUCCESS STORIES
             </Text>
@@ -504,7 +493,7 @@ export default function Home() {
               align="center"
               style={{ 
                 position: "relative",
-                animation: "fadeInUp 0.8s ease-out 0.2s both"
+                color: "var(--color-neutral-strong)",
               }}
             >
               Featured Case Studies
@@ -515,8 +504,7 @@ export default function Home() {
                 transform: "translateX(-50%)",
                 width: "60px", 
                 height: "3px", 
-                background: "var(--color-accent-medium)",
-                animation: "float 4s ease-in-out infinite"
+                background: "linear-gradient(90deg, #3AB4F2, #2B3A67)",
               }}></div>
             </Heading>
             <Text 
@@ -525,24 +513,24 @@ export default function Home() {
               align="center"
               style={{ 
                 maxWidth: "600px",
-                animation: "fadeInUp 0.8s ease-out 0.4s both"
               }}
             >
-              Real-world solutions delivering measurable business results for our clients
+              Real solutions driving measurable business results for our clients
             </Text>
           </Flex>
         
-          {/* Case Studies Cards */}
+          {/* Case Studies Cards - Completely redesigned for symmetry and professionalism */}
           <Flex 
             fillWidth 
             direction="column" 
             align="center"
             paddingY="xl"
-            paddingX="m"
+            paddingX={{ base: "m", tablet: "l" }}
             background="surface-weak"
             style={{
               borderBottomLeftRadius: "24px",
               borderBottomRightRadius: "24px",
+              backgroundImage: "radial-gradient(circle at top right, rgba(59, 180, 242, 0.03), transparent 70%)",
             }}
           >
             <Grid 
@@ -562,12 +550,13 @@ export default function Home() {
                     <Card
                       shadow="m"
                       style={{
-                        transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
+                        transition: "all 0.4s ease",
                         cursor: "pointer",
                         overflow: "hidden",
                         height: "100%",
-                        borderRadius: "24px", /* Increased border radius for more rounded edges */
+                        borderRadius: "16px",
                         transform: "translateY(0)",
+                        border: "1px solid var(--color-neutral-weak)",
                       }}
                       data-hover-shadow="xl"
                       data-hover-border="brand-medium"
@@ -577,116 +566,168 @@ export default function Home() {
                         <div style={{
                           position: "relative",
                           overflow: "hidden",
-                          borderTopLeftRadius: "24px", /* Consistent rounding with card */
-                          borderTopRightRadius: "24px", /* Consistent rounding with card */
+                          borderTopLeftRadius: "16px",
+                          borderTopRightRadius: "16px",
                         }}>
-                          <div 
-                            className="case-study-image"
-                            style={{
-                              backgroundImage: `url(${caseStudy.image})`,
-                              backgroundSize: 'cover',
-                              backgroundPosition: 'center',
-                              width: '100%',
-                              height: '260px',
-                              transition: 'transform 0.8s ease',
-                              transformOrigin: 'center',
-                              borderTopLeftRadius: "24px", /* Consistent rounding with card */
-                              borderTopRightRadius: "24px", /* Consistent rounding with card */
-                              filter: "brightness(1)",
-                            }}
-                          />
+                          {/* Image with overlay gradient for text readability */}
+                          <div style={{
+                            backgroundImage: `url(${caseStudy.image})`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center',
+                            width: '100%',
+                            height: '220px',
+                            transition: 'transform 0.6s ease',
+                            transformOrigin: 'center',
+                          }}/>
                           
-                          {/* Gradient overlay */}
+                          {/* Refined gradient overlay */}
                           <div style={{
                             position: "absolute",
                             top: 0,
                             left: 0,
                             right: 0,
                             bottom: 0,
-                            background: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,0.5) 100%)",
-                            borderTopLeftRadius: "24px", /* Consistent rounding with card */
-                            borderTopRightRadius: "24px", /* Consistent rounding with card */
+                            background: "linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,0.7) 100%)",
+                            opacity: 0.8,
                           }}/>
                           
-                          {/* Client badge with rounded corners */}
-                          <div 
-                            className="client-badge"
-                            style={{
-                              position: "absolute",
-                              top: "16px",
-                              right: "16px",
-                              background: "var(--color-brand-strong)",
-                              padding: "8px 16px",
-                              borderRadius: "30px", /* Very rounded pill shape */
-                              boxShadow: "0 4px 12px rgba(0, 0, 0, 0.15)",
-                              transform: "translateY(0)",
-                              transition: "transform 0.3s ease",
-                            }}
-                          >
+                          {/* Client badge with refined styling */}
+                          <div style={{
+                            position: "absolute",
+                            top: "16px",
+                            left: "16px",
+                            background: "#2B3A67",
+                            padding: "6px 14px",
+                            borderRadius: "20px",
+                            boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+                          }}>
                             <Text variant="label-strong-s" onBackground="surface-strong">
                               {caseStudy.client}
+                            </Text>
+                          </div>
+                          
+                          {/* Title positioned over image for better space usage */}
+                          <div style={{
+                            position: "absolute",
+                            bottom: "16px",
+                            left: "16px",
+                            right: "16px",
+                          }}>
+                            <Text 
+                              variant="heading-strong-m"
+                              style={{ 
+                                color: "white",
+                                textShadow: "0 1px 3px rgba(0,0,0,0.3)",
+                              }}
+                            >
+                              {caseStudy.title}
                             </Text>
                           </div>
                         </div>
                       )}
                       
-                      <Flex direction="column" gap="16" padding="l" style={{ borderRadius: "24px" }}>
-                        <Flex horizontal="space-between" vertical="center" gap="8">
-                          <Text 
-                            variant="heading-strong-m" 
-                            className="case-study-title"
-                            style={{ 
-                              color: "var(--color-brand-strong)",
-                              transition: "color 0.3s ease",
-                            }}
-                          >
-                            {caseStudy.title}
-                          </Text>
-                          <Icon 
-                            name="arrowRight" 
-                            size="s" 
-                            onBackground="brand-medium" 
-                            className="case-study-arrow"
-                            style={{ 
-                              transition: "transform 0.3s ease",
-                              background: "var(--color-brand-alpha-weak)",
-                              padding: "6px",
-                              borderRadius: "50%", /* Fully rounded icon background */
-                            }}
-                          />
-                        </Flex>
-
-                        <Text variant="body-default-m" wrap="balance" marginBottom="s">
-                          {caseStudy.description}
+                      <Flex direction="column" gap="16" padding="l">
+                        {/* Description with refined typography */}
+                        <Text 
+                          variant="body-default-m" 
+                          wrap="balance" 
+                          style={{
+                            lineHeight: 1.6,
+                            color: "var(--color-neutral-strong)",
+                          }}
+                        >
+                          {caseStudy.description.split('resulting in').shift()}
                         </Text>
                         
-                        {/* Extract and highlight metrics from the description with nice rounded badges */}
-                        <Flex wrap gap="12" marginTop="s">
-                          {caseStudy.description.match(/\d+%/g)?.map((metric, i) => (
-                            <Flex
-                              key={i}
-                              radius="xl"
-                              padding="12"
-                              background="accent-alpha-weak"
-                              border="accent-alpha-medium"
-                              vertical="center"
-                              horizontal="center"
-                              className="metric-badge"
-                              style={{
-                                minWidth: "70px",
-                                boxShadow: "0 4px 12px rgba(0, 0, 0, 0.05)",
-                                borderRadius: "40px", /* Extra rounded for metrics badges */
-                              }}
-                            >
-                              <Text 
-                                variant="label-strong-m" 
-                                onBackground="accent-strong"
-                                style={{ fontWeight: "700" }}
-                              >
-                                {metric}
-                              </Text>
-                            </Flex>
-                          ))}
+                        {/* Results section with structured layout */}
+                        <Flex direction="column" gap="12">
+                          <Text 
+                            variant="label-strong-s" 
+                            onBackground="brand-strong"
+                            style={{
+                              marginBottom: "4px",
+                              paddingBottom: "4px",
+                              borderBottom: "1px solid var(--color-neutral-weak)",
+                            }}
+                          >
+                            RESULTS
+                          </Text>
+                          
+                          {/* Symmetrical metrics layout */}
+                          <Flex gap="16" wrap>
+                            {caseStudy.description.match(/\d+%/g)?.map((metric, i) => {
+                              // Extract the result description
+                              const resultText = caseStudy.description.split(/\d+%/).filter(Boolean)[i];
+                              
+                              return (
+                                <Flex 
+                                  key={i} 
+                                  direction="column" 
+                                  gap="4"
+                                  style={{
+                                    flex: "1 0 calc(50% - 8px)",
+                                    minWidth: "120px",
+                                  }}
+                                >
+                                  {/* Metric with accent styling */}
+                                  <Text 
+                                    variant="heading-strong-l" 
+                                    onBackground="accent-strong"
+                                    style={{ 
+                                      fontSize: "28px",
+                                      background: "linear-gradient(135deg, #3AB4F2, #2B3A67)",
+                                      WebkitBackgroundClip: "text",
+                                      WebkitTextFillColor: "transparent",
+                                    }}
+                                  >
+                                    {metric}
+                                  </Text>
+                                  
+                                  {/* Metric description with clean typography */}
+                                  <Text 
+                                    variant="body-default-s" 
+                                    onBackground="neutral-strong"
+                                    style={{ lineHeight: 1.4 }}
+                                  >
+                                    {resultText.replace(/^[,\s]+|[,\s]+$/g, '')}
+                                  </Text>
+                                </Flex>
+                              );
+                            })}
+                          </Flex>
+                        </Flex>
+                        
+                        {/* View case study link with subtle animation */}
+                        <Flex 
+                          horizontal="end" 
+                          style={{ 
+                            marginTop: "8px",
+                            alignItems: "center",
+                          }}
+                        >
+                          <Text 
+                            variant="label-strong-s" 
+                            onBackground="brand-medium"
+                            style={{ marginRight: "8px" }}
+                          >
+                            View Case Study
+                          </Text>
+                          <div style={{
+                            display: "flex",
+                            justifyContent: "center",
+                            alignItems: "center",
+                            background: "var(--color-brand-alpha-weak)",
+                            width: "28px",
+                            height: "28px",
+                            borderRadius: "50%",
+                            transition: "transform 0.3s ease",
+                          }}>
+                            <Icon 
+                              name="arrowRight" 
+                              size="s" 
+                              onBackground="brand-medium"
+                            />
+                          </div>
                         </Flex>
                       </Flex>
                     </Card>
@@ -695,6 +736,21 @@ export default function Home() {
               ))}
             </Grid>
             
+            {/* "View all case studies" button with improved styling */}
+            <Button
+              variant="secondary"
+              size="m"
+              href="/portfolio"
+              suffixIcon="arrowRight"
+              style={{
+                marginTop: "32px",
+                borderRadius: "8px",
+                background: "var(--color-surface)",
+                border: "1px solid var(--color-brand-alpha-medium)",
+              }}
+            >
+              View all case studies
+            </Button>
           </Flex>
         </Flex>
       </RevealFx>
