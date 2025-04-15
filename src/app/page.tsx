@@ -956,7 +956,7 @@ export default function Home() {
         </Flex>
       </RevealFx>
 
-      {/* Client Testimonials Section - Redesigned with modern, clean aesthetic */}
+      {/* Client Testimonials Section - Redesigned */}
       <RevealFx translateY="12" delay={0.2}>
         <Flex 
           fillWidth 
@@ -970,33 +970,44 @@ export default function Home() {
             marginBottom: "var(--spacing-xl)",
             overflow: "hidden",
             position: "relative",
-            borderRadius: "24px",
+            borderRadius: "28px", /* Larger rounded corners throughout */
           }}
         >
-          {/* Testimonials Header with refined typography */}
+          {/* Background accent element with animation */}
+          <div style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "10px", /* Slightly thicker accent bar */
+            background: "linear-gradient(90deg, var(--color-accent-medium) 0%, var(--color-brand-medium) 100%)",
+            zIndex: 1,
+            animation: "pulse 3s infinite alternate",
+            borderTopLeftRadius: "28px",
+            borderTopRightRadius: "28px",
+          }}></div>
+          
+          {/* Testimonials Header */}
           <Flex 
             direction="column" 
             horizontal="center" 
             align="center" 
             paddingTop="xl"
-            paddingBottom="l"
+            paddingBottom="m"
             paddingX="xl"
             fillWidth
             style={{ 
-              background: "var(--color-surface)",
+              background: "var(--color-surface-strong)",
               borderBottom: "1px solid var(--color-neutral-weak)",
-              borderTopLeftRadius: "24px",
-              borderTopRightRadius: "24px",
+              borderTopLeftRadius: "28px",
+              borderTopRightRadius: "28px",
             }}
           >
             <Text 
               variant="label-strong-s" 
               onBackground="accent-medium" 
               marginBottom="s"
-              style={{ 
-                letterSpacing: "0.12em",
-                fontWeight: "600",
-              }}
+              style={{ letterSpacing: "0.1em", animation: "fadeInUp 0.8s ease-out" }}
             >
               CUSTOMER FEEDBACK
             </Text>
@@ -1007,7 +1018,7 @@ export default function Home() {
               align="center"
               style={{ 
                 position: "relative",
-                color: "var(--color-neutral-strong)",
+                animation: "fadeInUp 0.8s ease-out 0.2s both"
               }}
             >
               Client Testimonials
@@ -1016,9 +1027,11 @@ export default function Home() {
                 bottom: "0", 
                 left: "50%", 
                 transform: "translateX(-50%)",
-                width: "60px", 
-                height: "3px", 
-                background: "linear-gradient(90deg, #3AB4F2, #2B3A67)",
+                width: "80px", /* Slightly wider underline */
+                height: "4px", /* Slightly thicker underline */
+                background: "linear-gradient(90deg, var(--color-accent-medium) 0%, var(--color-brand-medium) 100%)",
+                animation: "float 4s ease-in-out infinite",
+                borderRadius: "2px", /* Rounded corners on the underline */
               }}></div>
             </Heading>
             <Text 
@@ -1027,13 +1040,14 @@ export default function Home() {
               align="center"
               style={{ 
                 maxWidth: "600px",
+                animation: "fadeInUp 0.8s ease-out 0.4s both"
               }}
             >
               Hear what our clients have to say about their experience working with us
             </Text>
           </Flex>
         
-          {/* Testimonials Cards - Redesigned for elegance and professionalism */}
+          {/* Testimonials Cards */}
           <Flex 
             fillWidth 
             direction="column" 
@@ -1042,15 +1056,15 @@ export default function Home() {
             paddingX="l"
             background="surface-weak"
             style={{
-              borderBottomLeftRadius: "24px",
-              borderBottomRightRadius: "24px",
-              backgroundImage: "radial-gradient(circle at bottom right, rgba(43, 58, 103, 0.03), transparent 70%)",
+              borderBottomLeftRadius: "28px",
+              borderBottomRightRadius: "28px",
+              background: "radial-gradient(circle at bottom left, var(--color-surface-weak) 0%, var(--color-surface) 100%)",
             }}
           >
             <Scroller 
               direction="row" 
               style={{ 
-                padding: "24px 8px 32px 8px",
+                padding: "16px 8px 32px 8px",
                 marginLeft: "-8px",
                 marginRight: "-8px",
                 width: "calc(100% + 16px)"
@@ -1059,33 +1073,32 @@ export default function Home() {
               {home.testimonials.map((testimonial, index) => (
                 <RevealFx key={index} translateY="8" delay={0.2 + index * 0.1}>
                   <Card 
-                    shadow="m"
+                    shadow="l"
                     style={{
-                      transition: "all 0.3s ease",
+                      transition: "all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275)",
                       overflow: "hidden",
                       minWidth: "340px",
                       maxWidth: "400px",
-                      margin: "12px",
-                      borderRadius: "16px",
+                      margin: "8px",
+                      borderRadius: "28px",
                       transform: "translateY(0)",
                       border: "1px solid var(--color-neutral-weak)",
                       position: "relative",
-                      background: "var(--color-surface)",
                     }}
-                    data-hover-shadow="l"
-                    data-hover-border="brand-alpha-medium"
-                    data-hover-transform="translateY(-8px)"
+                    data-hover-shadow="xl"
+                    data-hover-border="accent-medium"
+                    data-hover-transform="translateY(-8px) scale(1.01)"
                   >
-                    {/* Refined quote mark for visual interest */}
+                    {/* Quote mark decorative element */}
                     <div style={{
                       position: "absolute",
-                      top: "24px",
-                      right: "24px",
-                      fontSize: "60px",
+                      top: "20px",
+                      left: "20px",
+                      fontSize: "64px",
                       lineHeight: "1",
                       fontFamily: "Georgia, serif",
-                      opacity: "0.06",
-                      color: "#3AB4F2",
+                      opacity: "0.1",
+                      color: "var(--color-brand-strong)",
                       zIndex: 0,
                     }}>
                       "
@@ -1093,15 +1106,15 @@ export default function Home() {
                     
                     <Flex 
                       direction="column" 
-                      gap="20" 
+                      gap="24" 
                       padding="l"
                       style={{
                         position: "relative",
                         zIndex: 1,
                       }}
                     >
-                      {/* Rating stars with subtle styling */}
-                      <Flex gap="3" style={{ marginBottom: "8px" }}>
+                      {/* Rating stars if available */}
+                      <Flex gap="4" style={{ marginBottom: "8px" }}>
                         {Array(5).fill(0).map((_, i) => (
                           <Icon 
                             key={i}
@@ -1109,35 +1122,44 @@ export default function Home() {
                             size="s"
                             onBackground="accent-medium"
                             style={{
-                              opacity: 0.9,
+                              filter: "drop-shadow(0 2px 4px rgba(0,0,0,0.1))",
                             }}
                           />
                         ))}
                       </Flex>
                       
-                      {/* The quote with clean typography and spacing */}
+                      {/* The quote itself */}
                       <Text 
-                        variant="body-default-m" 
+                        variant="body-strong-m" 
                         onBackground="neutral-strong"
                         style={{ 
-                          position: "relative",
-                          lineHeight: 1.7,
                           fontStyle: "italic",
-                          marginBottom: "8px",
+                          position: "relative",
+                          lineHeight: "1.6",
                         }}
                       >
                         "{testimonial.quote}"
                       </Text>
                       
-                      {/* Author info with professional layout */}
+                      {/* Separator line */}
+                      <div style={{ 
+                        width: "40%", 
+                        height: "2px", 
+                        background: "linear-gradient(90deg, var(--color-accent-medium) 0%, transparent 100%)",
+                        borderRadius: "1px",
+                        marginTop: "8px",
+                        marginBottom: "8px",
+                      }}></div>
+                      
+                      {/* Author info with enhanced avatar */}
                       <Flex gap="16" vertical="center">
                         <div style={{
-                          width: "56px",
-                          height: "56px",
-                          borderRadius: "12px",
+                          width: "64px",
+                          height: "64px",
+                          borderRadius: "32px",
                           overflow: "hidden",
-                          border: "1px solid #3AB4F2",
-                          backgroundColor: "var(--color-brand-alpha-weak)",
+                          border: "3px solid var(--color-brand-alpha-medium)",
+                          boxShadow: "0 8px 20px rgba(0,0,0,0.1)",
                         }}>
                           <Avatar 
                             src={testimonial.image} 
@@ -1149,45 +1171,41 @@ export default function Home() {
                             }}
                           />
                         </div>
-                        <Flex direction="column" gap="2">
+                        <Flex direction="column">
                           <Text 
                             variant="label-strong-m"
                             style={{
-                              color: "var(--color-brand-strong)",
-                              fontWeight: "600",
+                              background: "linear-gradient(90deg, var(--color-brand-strong) 0%, var(--color-accent-strong) 100%)",
+                              WebkitBackgroundClip: "text",
+                              WebkitTextFillColor: "transparent",
+                              textShadow: "0 2px 10px rgba(0,0,0,0.05)",
                             }}
                           >
                             {testimonial.author}
                           </Text>
-                          <Flex gap="6" vertical="center">
-                            <Text 
-                              variant="body-default-s" 
-                              onBackground="neutral-medium"
+                          <Text variant="body-default-s" onBackground="neutral-medium">
+                            <span style={{ fontWeight: "600" }}>{testimonial.position}</span>
+                            {testimonial.company && (
+                              <>, <span style={{ fontStyle: "italic" }}>{testimonial.company}</span></>
+                            )}
+                          </Text>
+                          
+                          {/* Company logo or badge if available */}
+                          {testimonial.company && (
+                            <Badge
+                              variant="neutral"
+                              size="s"
                               style={{
-                                fontSize: "0.875rem",
+                                marginTop: "8px",
+                                borderRadius: "16px",
+                                padding: "4px 12px",
+                                display: "inline-flex",
+                                maxWidth: "fit-content",
                               }}
                             >
-                              {testimonial.position}
-                            </Text>
-                            {testimonial.company && (
-                              <>
-                                <div style={{ 
-                                  width: "4px", 
-                                  height: "4px", 
-                                  borderRadius: "50%", 
-                                  background: "var(--color-neutral-medium)",
-                                  opacity: 0.6,
-                                }}></div>
-                                <Text 
-                                  variant="body-default-s" 
-                                  onBackground="neutral-medium" 
-                                  style={{ fontWeight: "500", fontSize: "0.875rem" }}
-                                >
-                                  {testimonial.company}
-                                </Text>
-                              </>
-                            )}
-                          </Flex>
+                              {testimonial.company}
+                            </Badge>
+                          )}
                         </Flex>
                       </Flex>
                     </Flex>
@@ -1196,37 +1214,21 @@ export default function Home() {
               ))}
             </Scroller>
             
-            {/* Refined navigation indicators */}
-            <Flex horizontal="center" gap="10" marginTop="l">
+            {/* Navigation dots */}
+            <Flex horizontal="center" gap="8" marginTop="m">
               {[...Array(Math.min(3, home.testimonials.length))].map((_, i) => (
                 <div 
                   key={i} 
                   style={{
-                    width: i === 0 ? "24px" : "8px",
-                    height: "8px",
-                    borderRadius: "4px",
-                    background: i === 0 ? "#3AB4F2" : "var(--color-neutral-weak)",
+                    width: i === 0 ? "32px" : "12px",
+                    height: "12px",
+                    borderRadius: "6px",
+                    background: i === 0 ? "var(--color-accent-medium)" : "var(--color-neutral-weak)",
                     transition: "all 0.3s ease",
                   }}
                 ></div>
               ))}
             </Flex>
-            
-            {/* View all testimonials button */}
-            <Button
-              variant="secondary"
-              size="m"
-              href="/testimonials"
-              suffixIcon="arrowRight"
-              style={{
-                marginTop: "32px",
-                borderRadius: "8px",
-                background: "var(--color-surface)",
-                border: "1px solid var(--color-brand-alpha-medium)",
-              }}
-            >
-              View all testimonials
-            </Button>
           </Flex>
         </Flex>
       </RevealFx>
