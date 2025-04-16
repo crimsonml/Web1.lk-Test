@@ -179,7 +179,6 @@ const about = {
         Web1.LK is a leading web solutions provider based in Sri Lanka, specializing in enterprise-grade applications, POS systems, and SaaS platforms. With our technical expertise and business acumen, we help organizations streamline operations, increase revenue, and deliver exceptional user experiences.
       </>
     ),  },
-  // Keep other sections as they are for now
   work: {
     display: true,
     title: "Our History",
@@ -211,7 +210,7 @@ const about = {
     ],
   },
   studies: {
-    display: true,
+    display: false, // Changed from true to false to hide the section
     title: "Our Partners",
     institutions: [
       {

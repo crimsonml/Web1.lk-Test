@@ -7,11 +7,15 @@ import {
   IconButton,
   SmartImage,
   Text,
+  RevealFx,
+  Badge,
+  Card,
+  Grid,
 } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
-import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
 import { person, about, social } from "@/app/resources/content";
+import "@/components/about/about-animations.css";
 
 export async function generateMetadata() {
   const title = about.title;
@@ -43,28 +47,6 @@ export async function generateMetadata() {
 }
 
 export default function About() {
-  const structure = [
-    {
-      title: about.intro.title,
-      display: about.intro.display,
-      items: [],
-    },
-    {
-      title: about.work.title,
-      display: about.work.display,
-      items: about.work.experiences.map((experience) => experience.company),
-    },
-    {
-      title: about.studies.title,
-      display: about.studies.display,
-      items: about.studies.institutions.map((institution) => institution.name),
-    },
-    {
-      title: about.technical.title,
-      display: about.technical.display,
-      items: about.technical.skills.map((skill) => skill.title),
-    },
-  ];
   return (
     <Column maxWidth="m" horizontal="center">
       <script
@@ -79,226 +61,469 @@ export default function About() {
             url: `https://${baseURL}/about`,
             image: `${baseURL}/images/${person.avatar}`,
             sameAs: social
-              .filter((item) => item.link && !item.link.startsWith("mailto:")) // Filter out empty links and email links
+              .filter((item) => item.link && !item.link.startsWith("mailto:"))
               .map((item) => item.link),
           }),
         }}
       />
-      {about.tableOfContent.display && (
-        <TableOfContents structure={structure} about={about} />
-      )}
-      <Flex fillWidth mobileDirection="column" horizontal="center">
-        <Column fillWidth maxWidth="800px" paddingX="m">
-          <Column
-            id={about.intro.title}
-            fillWidth
-            vertical="center"
-            marginY="xl"
-            horizontal="center"
-          >
-            {about.calendar.display && (
-              <Flex
-                fitWidth
-                border="brand-alpha-medium"
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-                horizontal="center"
-              >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Flex>
-            )}
-            <Heading variant="display-strong-xl" align="center" marginBottom="m">
-              {person.name}
+
+      {/* Simplified hero section */}
+      <Flex
+        fillWidth
+        style={{
+          position: "relative",
+          marginTop: "var(--spacing-xl)",
+          marginBottom: "var(--spacing-xl)",
+          borderBottom: "1px solid var(--color-neutral-weak)",
+          paddingBottom: "var(--spacing-xl)",
+        }}
+      >
+        <Flex
+          direction="column"
+          gap="xl"
+          paddingY="l"
+          paddingX={{ base: "m", tablet: "l" }}
+          fillWidth
+          style={{
+            maxWidth: "900px",
+            margin: "0 auto",
+            position: "relative",
+          }}
+        >
+          <RevealFx translateY="8">
+            <Heading
+              variant="display-strong-xl"
+              align="center"
+              marginBottom="m"
+            >
+              About Web1.LK
             </Heading>
+          </RevealFx>
+
+          <RevealFx translateY="8" delay={0.1}>
             <Text
               variant="display-default-xs"
-              onBackground="neutral-weak"
+              onBackground="neutral-medium"
               align="center"
               marginBottom="l"
+              style={{
+                maxWidth: "800px",
+                margin: "0 auto",
+              }}
             >
-              {person.role}
+              Your trusted partner in enterprise web development since 2015
             </Text>
-            {social.length > 0 && (
-              <Flex paddingY="l" gap="8" wrap horizontal="center" fillWidth>
+          </RevealFx>
+
+          {/* Social media links only */}
+          {social.length > 0 && (
+            <RevealFx translateY="8" delay={0.2}>
+              <Flex gap="16" wrap horizontal="center" fillWidth>
                 {social.map(
                   (item) =>
                     item.link && (
-                        <>
-                            <Button
-                                className="s-flex-hide"
-                                key={item.name}
-                                href={item.link}
-                                prefixIcon={item.icon}
-                                label={item.name}
-                                size="s"
-                                variant="secondary"
-                            />
-                            <IconButton
-                                className="s-flex-show"
-                                size="l"
-                                key={`${item.name}-icon`}
-                                href={item.link}
-                                icon={item.icon}
-                                variant="secondary"
-                            />
-                        </>
+                      <IconButton
+                        key={item.name}
+                        href={item.link}
+                        icon={item.icon}
+                        variant="ghost"
+                        size="l"
+                        tooltip={item.name}
+                      />
                     ),
                 )}
               </Flex>
-            )}
-          </Column>
-
-          {about.intro.display && (
-            <Column textVariant="body-default-l" fillWidth gap="m" marginBottom="xl">
-              {about.intro.description}
-            </Column>
+            </RevealFx>
           )}
+        </Flex>
+      </Flex>
 
-          {about.work.display && (
-            <>
-              <Heading as="h2" id={about.work.title} variant="display-strong-s" marginBottom="m" align="center">
-                {about.work.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.work.experiences.map((experience, index) => (
-                  <Column key={`${experience.company}-${experience.role}-${index}`} fillWidth>
-                    <Flex fillWidth horizontal="space-between" vertical="end" marginBottom="4">
-                      <Text id={experience.company} variant="heading-strong-l">
-                        {experience.company}
-                      </Text>
-                      <Text variant="heading-default-xs" onBackground="neutral-weak">
-                        {experience.timeframe}
+      {/* Main content container */}
+      <Flex fillWidth mobileDirection="column" horizontal="center">
+        <Column fillWidth maxWidth="900px" paddingX="m">
+          {/* Introduction section - simplified */}
+          {about.intro.display && (
+            <RevealFx translateY="12" delay={0.2}>
+              <Flex
+                fillWidth
+                direction="column"
+                paddingY="l"
+                marginBottom="xl"
+              >
+                <Heading
+                  as="h2"
+                  id={about.intro.title}
+                  variant="display-strong-s"
+                  marginBottom="l"
+                  style={{
+                    position: "relative",
+                    color: "var(--color-brand-strong)",
+                    borderBottom: "1px solid var(--color-neutral-weak)",
+                    paddingBottom: "var(--spacing-s)",
+                  }}
+                >
+                  {about.intro.title}
+                </Heading>
+
+                <Flex direction="column" gap="m">
+                  <Text
+                    variant="body-default-l"
+                    style={{
+                      lineHeight: "1.8",
+                      color: "var(--color-neutral-strong)",
+                    }}
+                  >
+                    {about.intro.description}
+                  </Text>
+
+                  {/* Mission/Vision simplified into two columns */}
+                  <Grid
+                    columns="2"
+                    tabletColumns="2"
+                    mobileColumns="1"
+                    gap="24"
+                    marginTop="l"
+                  >
+                    <Flex direction="column" gap="s">
+                      <Heading as="h3" variant="heading-strong-m">
+                        Our Mission
+                      </Heading>
+                      <Text variant="body-default-m">
+                        To empower businesses through innovative web solutions
+                        that drive growth and digital transformation.
                       </Text>
                     </Flex>
-                    <Text variant="body-default-s" onBackground="brand-weak" marginBottom="m">
-                      {experience.role}
-                    </Text>
-                    <Column as="ul" gap="16">
-                      {experience.achievements.map((achievement: JSX.Element, index: number) => (
-                        <Text
-                          as="li"
-                          variant="body-default-m"
-                          key={`${experience.company}-${index}`}
-                        >
-                          {achievement}
-                        </Text>
-                      ))}
-                    </Column>
-                    {experience.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" paddingLeft="40" wrap>
-                        {experience.images.map((image, index) => (
-                          <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
-                          >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
-                          </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
+
+                    <Flex direction="column" gap="s">
+                      <Heading as="h3" variant="heading-strong-m">
+                        Our Vision
+                      </Heading>
+                      <Text variant="body-default-m">
+                        To be the leading provider of enterprise-grade web
+                        solutions, recognized for excellence in innovation and
+                        customer success.
+                      </Text>
+                    </Flex>
+                  </Grid>
+                </Flex>
+              </Flex>
+            </RevealFx>
           )}
 
-          {about.studies.display && (
-            <>
-              <Heading as="h2" id={about.studies.title} variant="display-strong-s" marginBottom="m" align="center">
-                {about.studies.title}
-              </Heading>
-              <Column fillWidth gap="l" marginBottom="40">
-                {about.studies.institutions.map((institution, index) => (
-                  <Column key={`${institution.name}-${index}`} fillWidth gap="4">
-                    <Text id={institution.name} variant="heading-strong-l">
-                      {institution.name}
-                    </Text>
-                    <Text variant="heading-default-xs" onBackground="neutral-weak">
-                      {institution.description}
-                    </Text>
-                  </Column>
-                ))}
-              </Column>
-            </>
-          )}
-
-          {about.technical.display && (
-            <>
-              <Heading
-                as="h2"
-                id={about.technical.title}
-                variant="display-strong-s"
-                marginBottom="40"
-                align="center"
+          {/* Work Experience section - simplified */}
+          {about.work.display && (
+            <RevealFx translateY="12" delay={0.2}>
+              <Flex
+                fillWidth
+                direction="column"
+                paddingY="l"
+                marginBottom="xl"
               >
-                {about.technical.title}
-              </Heading>
-              <Column fillWidth gap="l">
-                {about.technical.skills.map((skill, index) => (
-                  <Column key={`${skill}-${index}`} fillWidth gap="4">
-                    <Text variant="heading-strong-l">{skill.title}</Text>
-                    <Text variant="body-default-m" onBackground="neutral-weak">
-                      {skill.description}
-                    </Text>
-                    {skill.images && skill.images.length > 0 && (
-                      <Flex fillWidth paddingTop="m" gap="12" wrap>
-                        {skill.images.map((image, index) => (
+                <Heading
+                  as="h2"
+                  id={about.work.title}
+                  variant="display-strong-s"
+                  marginBottom="l"
+                  style={{
+                    position: "relative",
+                    color: "var(--color-brand-strong)",
+                    borderBottom: "1px solid var(--color-neutral-weak)",
+                    paddingBottom: "var(--spacing-s)",
+                  }}
+                >
+                  {about.work.title}
+                </Heading>
+
+                <Flex direction="column" gap="xl">
+                  {about.work.experiences.map((experience, index) => (
+                    <RevealFx
+                      key={`${experience.company}-${experience.role}-${index}`}
+                      translateY="8"
+                      delay={0.1 * index}
+                    >
+                      <Card
+                        shadow="s"
+                        style={{
+                          borderRadius: "8px",
+                          border: "1px solid var(--color-neutral-weak)",
+                          overflow: "hidden",
+                        }}
+                      >
+                        <Flex fillWidth direction="column" padding="l">
                           <Flex
-                            key={index}
-                            border="neutral-medium"
-                            radius="m"
-                            //@ts-ignore
-                            minWidth={image.width}
-                            //@ts-ignore
-                            height={image.height}
+                            fillWidth
+                            horizontal="space-between"
+                            vertical="center"
+                            marginBottom="m"
                           >
-                            <SmartImage
-                              enlarge
-                              radius="m"
-                              //@ts-ignore
-                              sizes={image.width.toString()}
-                              //@ts-ignore
-                              alt={image.alt}
-                              //@ts-ignore
-                              src={image.src}
-                            />
+                            <Text
+                              id={experience.company}
+                              variant="heading-strong-l"
+                              style={{
+                                color: "var(--color-brand-strong)",
+                              }}
+                            >
+                              {experience.company}
+                            </Text>
+                            <Badge variant="neutral">{experience.timeframe}</Badge>
                           </Flex>
-                        ))}
-                      </Flex>
-                    )}
-                  </Column>
-                ))}
-              </Column>
-            </>
+
+                          <Text
+                            variant="heading-default-m"
+                            onBackground="brand-medium"
+                            marginBottom="l"
+                            style={{
+                              fontWeight: 600,
+                            }}
+                          >
+                            {experience.role}
+                          </Text>
+
+                          <Column
+                            as="ul"
+                            gap="16"
+                            style={{ paddingLeft: "20px" }}
+                          >
+                            {experience.achievements.map(
+                              (achievement: JSX.Element, index: number) => (
+                                <Text
+                                  as="li"
+                                  variant="body-default-m"
+                                  key={`${experience.company}-${index}`}
+                                  style={{
+                                    lineHeight: "1.7",
+                                  }}
+                                >
+                                  {achievement}
+                                </Text>
+                              ),
+                            )}
+                          </Column>
+
+                          {experience.images.length > 0 && (
+                            <Grid
+                              columns="3"
+                              tabletColumns="2"
+                              mobileColumns="1"
+                              gap="16"
+                              marginTop="l"
+                            >
+                              {experience.images.map((image, index) => (
+                                <Flex
+                                  key={index}
+                                  style={{
+                                    borderRadius: "8px",
+                                    overflow: "hidden",
+                                  }}
+                                >
+                                  <SmartImage
+                                    enlarge
+                                    radius="s"
+                                    //@ts-ignore
+                                    sizes={image.width.toString()}
+                                    //@ts-ignore
+                                    alt={image.alt}
+                                    //@ts-ignore
+                                    src={image.src}
+                                    style={{
+                                      width: "100%",
+                                      height: "auto",
+                                    }}
+                                  />
+                                </Flex>
+                              ))}
+                            </Grid>
+                          )}
+                        </Flex>
+                      </Card>
+                    </RevealFx>
+                  ))}
+                </Flex>
+              </Flex>
+            </RevealFx>
           )}
+
+          {/* Education/Studies section - simplified */}
+          {about.studies.display && (
+            <RevealFx translateY="12" delay={0.3}>
+              <Flex
+                fillWidth
+                direction="column"
+                paddingY="l"
+                marginBottom="xl"
+              >
+                <Heading
+                  as="h2"
+                  id={about.studies.title}
+                  variant="display-strong-s"
+                  marginBottom="l"
+                  style={{
+                    position: "relative",
+                    color: "var(--color-brand-strong)",
+                    borderBottom: "1px solid var(--color-neutral-weak)",
+                    paddingBottom: "var(--spacing-s)",
+                  }}
+                >
+                  {about.studies.title}
+                </Heading>
+
+                <Grid
+                  columns="2"
+                  tabletColumns="2"
+                  mobileColumns="1"
+                  gap="24"
+                >
+                  {about.studies.institutions.map((institution, index) => (
+                    <RevealFx
+                      key={`${institution.name}-${index}`}
+                      translateY="8"
+                      delay={0.1 * index}
+                    >
+                      <Flex direction="column" gap="s">
+                        <Text
+                          id={institution.name}
+                          variant="heading-strong-m"
+                          style={{
+                            color: "var(--color-brand-strong)",
+                          }}
+                        >
+                          {institution.name}
+                        </Text>
+
+                        <Text
+                          variant="body-default-m"
+                          onBackground="neutral-medium"
+                        >
+                          {institution.description}
+                        </Text>
+                      </Flex>
+                    </RevealFx>
+                  ))}
+                </Grid>
+              </Flex>
+            </RevealFx>
+          )}
+
+          {/* Technical Skills section - simplified without progress bars */}
+          {about.technical.display && (
+            <RevealFx translateY="12" delay={0.4}>
+              <Flex
+                fillWidth
+                direction="column"
+                paddingY="l"
+                marginBottom="xl"
+              >
+                <Heading
+                  as="h2"
+                  id={about.technical.title}
+                  variant="display-strong-s"
+                  marginBottom="l"
+                  style={{
+                    position: "relative",
+                    color: "var(--color-brand-strong)",
+                    borderBottom: "1px solid var(--color-neutral-weak)",
+                    paddingBottom: "var(--spacing-s)",
+                  }}
+                >
+                  {about.technical.title}
+                </Heading>
+
+                <Flex fillWidth direction="column" gap="xl">
+                  {about.technical.skills.map((skill, index) => (
+                    <RevealFx
+                      key={`${skill.title}-${index}`}
+                      translateY="8"
+                      delay={0.1 * index}
+                    >
+                      <Flex fillWidth direction="column" gap="m">
+                        <Text
+                          variant="heading-strong-m"
+                          style={{
+                            color: "var(--color-brand-strong)",
+                          }}
+                        >
+                          {skill.title}
+                        </Text>
+
+                        <Text
+                          variant="body-default-m"
+                          onBackground="neutral-medium"
+                          style={{
+                            lineHeight: "1.7",
+                          }}
+                        >
+                          {skill.description}
+                        </Text>
+
+                        {/* Technology logos/icons in a simpler grid */}
+                        {skill.images && skill.images.length > 0 && (
+                          <Grid
+                            columns="6"
+                            tabletColumns="4"
+                            mobileColumns="3"
+                            gap="16"
+                            marginTop="s"
+                          >
+                            {skill.images.map((image, index) => (
+                              <Flex
+                                key={index}
+                                horizontal="center"
+                                style={{
+                                  padding: "12px",
+                                  border: "1px solid var(--color-neutral-weak)",
+                                  borderRadius: "4px",
+                                }}
+                              >
+                                <SmartImage
+                                  //@ts-ignore
+                                  alt={image.alt}
+                                  //@ts-ignore
+                                  src={image.src}
+                                  style={{
+                                    maxWidth: "100%",
+                                    maxHeight: "36px",
+                                  }}
+                                />
+                              </Flex>
+                            ))}
+                          </Grid>
+                        )}
+                      </Flex>
+                    </RevealFx>
+                  ))}
+                </Flex>
+              </Flex>
+            </RevealFx>
+          )}
+
+          {/* Simple CTA section */}
+          <RevealFx translateY="12" delay={0.4}>
+            <Flex
+              fillWidth
+              direction="column"
+              align="center"
+              gap="l"
+              paddingY="xl"
+              marginY="l"
+              background="surface-weak"
+              border="neutral-weak"
+              radius="m"
+            >
+              <Heading
+                variant="display-strong-s"
+                align="center"
+                style={{
+                  maxWidth: "700px",
+                }}
+              >
+                Ready to discuss your project?
+              </Heading>
+
+              <Button variant="primary" size="l" href="/contact" arrowIcon>
+                Contact Us
+              </Button>
+            </Flex>
+          </RevealFx>
         </Column>
       </Flex>
     </Column>
