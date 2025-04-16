@@ -110,22 +110,12 @@ export default function Home() {
           zIndex: -1,
         }}></div>
         
-        {/* Elegant border accent */}
-        <div style={{
-          position: "absolute",
-          top: 0,
-          left: 0,
-          right: 0,
-          height: "4px",
-          background: "linear-gradient(90deg, #2B3A67, #3AB4F2)",
-          zIndex: 1,
-        }}></div>
-        
         <Flex 
           direction="column"
           gap="xl"
           paddingY="xxl"
           paddingX={{ base: "xl", tablet: "xxl" }}
+          paddingTop="3xl" /* Increased top padding */
           fillWidth
           style={{
             maxWidth: "1200px",
@@ -143,9 +133,9 @@ export default function Home() {
               textAlign: "center",
             }}
           >
-            {/* Company name with special effect */}
+            {/* Company name with special effect - Adjusted position */}
             <RevealFx translateY="4">
-              <Flex horizontal="center" vertical="center" gap="s">
+              <Flex horizontal="center" vertical="center" gap="s" marginTop="l"> {/* Added top margin */}
                 <Text 
                   variant="label-strong-l" 
                   style={{
@@ -263,7 +253,7 @@ export default function Home() {
                 width: "100%",
                 maxWidth: "800px",
                 position: "relative",
-                padding: "0 20px 20px",
+                padding: "0 20px 40px", // Changed from 20px to 40px to increase bottom padding
               }}>
                 {[
                   { bg: "#2B3A67", icon: "code", label: "Web Apps" },
@@ -540,7 +530,7 @@ export default function Home() {
               gap="32" 
               style={{ 
                 width: "100%",
-                maxWidth: "960px",
+                maxWidth: "900px", // Reduced from 960px to make the container smaller
                 margin: "0 auto"
               }}
             >
@@ -554,9 +544,11 @@ export default function Home() {
                         cursor: "pointer",
                         overflow: "hidden",
                         height: "100%",
-                        borderRadius: "16px",
+                        borderRadius: "28px", // Increased from 20px to 28px for more rounded corners
                         transform: "translateY(0)",
                         border: "1px solid var(--color-neutral-weak)",
+                        maxWidth: "420px", // Added to constrain the card width
+                        margin: "0 auto", // Center the card inside its grid cell
                       }}
                       data-hover-shadow="xl"
                       data-hover-border="brand-medium"
@@ -566,8 +558,8 @@ export default function Home() {
                         <div style={{
                           position: "relative",
                           overflow: "hidden",
-                          borderTopLeftRadius: "16px",
-                          borderTopRightRadius: "16px",
+                          borderTopLeftRadius: "28px", // Increased from 20px to 28px to match parent
+                          borderTopRightRadius: "28px", // Increased from 20px to 28px to match parent
                         }}>
                           {/* Image with overlay gradient for text readability */}
                           <div style={{
@@ -575,7 +567,7 @@ export default function Home() {
                             backgroundSize: 'cover',
                             backgroundPosition: 'center',
                             width: '100%',
-                            height: '220px',
+                            height: '200px', // Decreased from 220px to make the image area smaller
                             transition: 'transform 0.6s ease',
                             transformOrigin: 'center',
                           }}/>
