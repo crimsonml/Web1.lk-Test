@@ -184,33 +184,95 @@ export default function About() {
                     gap="24"
                     marginTop="l"
                   >
-                    <Flex direction="column" gap="s">
-                      <Heading as="h3" variant="heading-strong-m">
+                    <Flex 
+                      direction="column" 
+                      gap="s" 
+                      padding="l"
+                      background="surface-weak"
+                      border="neutral-weak"
+                      radius="m"
+                    >
+                      <Heading as="h3" variant="heading-strong-m" style={{ color: "var(--color-brand-strong)" }}>
                         Our Mission
                       </Heading>
-                      <Text variant="body-default-m">
-                        To empower businesses through innovative web solutions
-                        that drive growth and digital transformation.
+                      <Text variant="body-default-m" style={{ lineHeight: "1.7" }}>
+                        To empower businesses through innovative web solutions that drive sustainable growth, 
+                        optimize operations, and catalyze digital transformation in an evolving marketplace.
                       </Text>
                     </Flex>
 
-                    <Flex direction="column" gap="s">
-                      <Heading as="h3" variant="heading-strong-m">
+                    <Flex 
+                      direction="column" 
+                      gap="s"
+                      padding="l"
+                      background="surface-weak"
+                      border="neutral-weak"
+                      radius="m"
+                    >
+                      <Heading as="h3" variant="heading-strong-m" style={{ color: "var(--color-brand-strong)" }}>
                         Our Vision
                       </Heading>
-                      <Text variant="body-default-m">
-                        To be the leading provider of enterprise-grade web
-                        solutions, recognized for excellence in innovation and
-                        customer success.
+                      <Text variant="body-default-m" style={{ lineHeight: "1.7" }}>
+                        To be recognized globally as the premier architect of enterprise-grade web solutions, 
+                        setting new standards for technical excellence, innovation, and client success.
                       </Text>
                     </Flex>
                   </Grid>
+
+                  {/* Core values section - adding a new section */}
+                  <Flex
+                    direction="column"
+                    gap="m"
+                    marginTop="xl"
+                  >
+                    <Heading as="h3" variant="heading-strong-m" style={{ color: "var(--color-brand-strong)" }}>
+                      Our Core Values
+                    </Heading>
+                    
+                    <Grid
+                      columns="3"
+                      tabletColumns="2"
+                      mobileColumns="1"
+                      gap="16"
+                      marginTop="m"
+                    >
+                      <Flex direction="column" gap="xs" padding="m" border="neutral-weak" radius="s">
+                        <Text variant="heading-strong-s">Innovation</Text>
+                        <Text variant="body-default-s">Constantly pushing boundaries to deliver cutting-edge solutions.</Text>
+                      </Flex>
+                      
+                      <Flex direction="column" gap="xs" padding="m" border="neutral-weak" radius="s">
+                        <Text variant="heading-strong-s">Excellence</Text>
+                        <Text variant="body-default-s">Maintaining the highest standards in every aspect of our work.</Text>
+                      </Flex>
+                      
+                      <Flex direction="column" gap="xs" padding="m" border="neutral-weak" radius="s">
+                        <Text variant="heading-strong-s">Integrity</Text>
+                        <Text variant="body-default-s">Building relationships based on trust, transparency, and honesty.</Text>
+                      </Flex>
+                      
+                      <Flex direction="column" gap="xs" padding="m" border="neutral-weak" radius="s">
+                        <Text variant="heading-strong-s">Collaboration</Text>
+                        <Text variant="body-default-s">Working together with clients to achieve shared objectives.</Text>
+                      </Flex>
+                      
+                      <Flex direction="column" gap="xs" padding="m" border="neutral-weak" radius="s">
+                        <Text variant="heading-strong-s">Results-Driven</Text>
+                        <Text variant="body-default-s">Focusing on measurable outcomes that drive business success.</Text>
+                      </Flex>
+                      
+                      <Flex direction="column" gap="xs" padding="m" border="neutral-weak" radius="s">
+                        <Text variant="heading-strong-s">Adaptability</Text>
+                        <Text variant="body-default-s">Embracing change and evolving with the technology landscape.</Text>
+                      </Flex>
+                    </Grid>
+                  </Flex>
                 </Flex>
               </Flex>
             </RevealFx>
           )}
 
-          {/* Work Experience section - simplified */}
+          {/* Simple Journey Timeline */}
           {about.work.display && (
             <RevealFx translateY="12" delay={0.2}>
               <Flex
@@ -223,7 +285,7 @@ export default function About() {
                   as="h2"
                   id={about.work.title}
                   variant="display-strong-s"
-                  marginBottom="l"
+                  marginBottom="s"
                   style={{
                     position: "relative",
                     color: "var(--color-brand-strong)",
@@ -233,109 +295,44 @@ export default function About() {
                 >
                   {about.work.title}
                 </Heading>
+                
+                <Text variant="body-default-m" marginBottom="l">
+                  {about.work.description}
+                </Text>
 
-                <Flex direction="column" gap="xl">
-                  {about.work.experiences.map((experience, index) => (
+                <Flex direction="column" gap="m">
+                  {about.work.milestones && about.work.milestones.map((milestone, index) => (
                     <RevealFx
-                      key={`${experience.company}-${experience.role}-${index}`}
+                      key={`milestone-${index}`}
                       translateY="8"
                       delay={0.1 * index}
                     >
-                      <Card
-                        shadow="s"
+                      <Flex 
+                        fillWidth 
+                        marginBottom="s" 
+                        gap="m"
+                        paddingY="m"
+                        paddingX="l"
+                        background="surface-weak"
+                        border="neutral-weak"
+                        radius="m"
                         style={{
-                          borderRadius: "8px",
-                          border: "1px solid var(--color-neutral-weak)",
-                          overflow: "hidden",
+                          position: "relative",
                         }}
                       >
-                        <Flex fillWidth direction="column" padding="l">
-                          <Flex
-                            fillWidth
-                            horizontal="space-between"
-                            vertical="center"
-                            marginBottom="m"
-                          >
-                            <Text
-                              id={experience.company}
-                              variant="heading-strong-l"
-                              style={{
-                                color: "var(--color-brand-strong)",
-                              }}
-                            >
-                              {experience.company}
-                            </Text>
-                            <Badge variant="neutral">{experience.timeframe}</Badge>
-                          </Flex>
-
-                          <Text
-                            variant="heading-default-m"
-                            onBackground="brand-medium"
-                            marginBottom="l"
-                            style={{
-                              fontWeight: 600,
-                            }}
-                          >
-                            {experience.role}
+                        <Badge variant="primary">
+                          {milestone.year}
+                        </Badge>
+                        
+                        <Flex direction="column" gap="2">
+                          <Text variant="heading-strong-m" style={{ color: "var(--color-brand-strong)" }}>
+                            {milestone.title}
                           </Text>
-
-                          <Column
-                            as="ul"
-                            gap="16"
-                            style={{ paddingLeft: "20px" }}
-                          >
-                            {experience.achievements.map(
-                              (achievement: JSX.Element, index: number) => (
-                                <Text
-                                  as="li"
-                                  variant="body-default-m"
-                                  key={`${experience.company}-${index}`}
-                                  style={{
-                                    lineHeight: "1.7",
-                                  }}
-                                >
-                                  {achievement}
-                                </Text>
-                              ),
-                            )}
-                          </Column>
-
-                          {experience.images.length > 0 && (
-                            <Grid
-                              columns="3"
-                              tabletColumns="2"
-                              mobileColumns="1"
-                              gap="16"
-                              marginTop="l"
-                            >
-                              {experience.images.map((image, index) => (
-                                <Flex
-                                  key={index}
-                                  style={{
-                                    borderRadius: "8px",
-                                    overflow: "hidden",
-                                  }}
-                                >
-                                  <SmartImage
-                                    enlarge
-                                    radius="s"
-                                    //@ts-ignore
-                                    sizes={image.width.toString()}
-                                    //@ts-ignore
-                                    alt={image.alt}
-                                    //@ts-ignore
-                                    src={image.src}
-                                    style={{
-                                      width: "100%",
-                                      height: "auto",
-                                    }}
-                                  />
-                                </Flex>
-                              ))}
-                            </Grid>
-                          )}
+                          <Text variant="body-default-m">
+                            {milestone.description}
+                          </Text>
                         </Flex>
-                      </Card>
+                      </Flex>
                     </RevealFx>
                   ))}
                 </Flex>
@@ -404,7 +401,7 @@ export default function About() {
             </RevealFx>
           )}
 
-          {/* Technical Skills section - simplified without progress bars */}
+          {/* Technical Skills section - modernized without icons */}
           {about.technical.display && (
             <RevealFx translateY="12" delay={0.4}>
               <Flex
@@ -417,112 +414,174 @@ export default function About() {
                   as="h2"
                   id={about.technical.title}
                   variant="display-strong-s"
-                  marginBottom="l"
+                  marginBottom="s"
+                  align="center"
                   style={{
                     position: "relative",
                     color: "var(--color-brand-strong)",
-                    borderBottom: "1px solid var(--color-neutral-weak)",
-                    paddingBottom: "var(--spacing-s)",
                   }}
                 >
                   {about.technical.title}
                 </Heading>
 
-                <Flex fillWidth direction="column" gap="xl">
+                {about.technical.subtitle && (
+                  <Text
+                    variant="body-default-m"
+                    onBackground="neutral-medium"
+                    align="center"
+                    marginBottom="xl"
+                    style={{
+                      maxWidth: "700px",
+                      margin: "0 auto 40px auto",
+                    }}
+                  >
+                    {about.technical.subtitle}
+                  </Text>
+                )}
+
+                <Grid columns="2" tabletColumns="1" mobileColumns="1" gap="32">
                   {about.technical.skills.map((skill, index) => (
                     <RevealFx
                       key={`${skill.title}-${index}`}
                       translateY="8"
                       delay={0.1 * index}
                     >
-                      <Flex fillWidth direction="column" gap="m">
-                        <Text
-                          variant="heading-strong-m"
-                          style={{
-                            color: "var(--color-brand-strong)",
-                          }}
-                        >
-                          {skill.title}
-                        </Text>
-
-                        <Text
-                          variant="body-default-m"
-                          onBackground="neutral-medium"
-                          style={{
-                            lineHeight: "1.7",
-                          }}
-                        >
-                          {skill.description}
-                        </Text>
-
-                        {/* Technology logos/icons in a simpler grid */}
-                        {skill.images && skill.images.length > 0 && (
-                          <Grid
-                            columns="6"
-                            tabletColumns="4"
-                            mobileColumns="3"
-                            gap="16"
-                            marginTop="s"
+                      <Card
+                        shadow="s"
+                        padding="l"
+                        radius="m"
+                        border="neutral-weak"
+                        background="surface-weak"
+                        style={{
+                          height: "100%",
+                          transition: "all 0.3s ease",
+                        }}
+                        data-hover-shadow="m"
+                        data-hover-border="brand-alpha-medium"
+                        data-hover-transform="translateY(-4px)"
+                      >
+                        <Flex fillWidth direction="column" gap="m">
+                          {/* Title */}
+                          <Heading 
+                            as="h3" 
+                            variant="heading-strong-m" 
+                            align="center"
+                            style={{
+                              color: "var(--color-brand-strong)",
+                              marginBottom: "8px",
+                              borderBottom: "1px solid var(--color-neutral-weak)",
+                              paddingBottom: "12px",
+                            }}
                           >
-                            {skill.images.map((image, index) => (
-                              <Flex
-                                key={index}
-                                horizontal="center"
-                                style={{
-                                  padding: "12px",
-                                  border: "1px solid var(--color-neutral-weak)",
-                                  borderRadius: "4px",
-                                }}
-                              >
-                                <SmartImage
-                                  //@ts-ignore
-                                  alt={image.alt}
-                                  //@ts-ignore
-                                  src={image.src}
+                            {skill.title}
+                          </Heading>
+
+                          {/* Description */}
+                          <Text
+                            variant="body-default-m"
+                            align="center"
+                            style={{
+                              lineHeight: "1.7",
+                            }}
+                          >
+                            {skill.description}
+                          </Text>
+
+                          {/* Technology tags */}
+                          {skill.technologies && skill.technologies.length > 0 && (
+                            <Flex
+                              wrap
+                              horizontal="center"
+                              gap="8"
+                              marginTop="m"
+                            >
+                              {skill.technologies.map((tech, idx) => (
+                                <Badge 
+                                  key={idx}
+                                  variant="neutral" 
+                                  size="s"
                                   style={{
-                                    maxWidth: "100%",
-                                    maxHeight: "36px",
+                                    margin: "4px",
                                   }}
-                                />
-                              </Flex>
-                            ))}
-                          </Grid>
-                        )}
-                      </Flex>
+                                >
+                                  {tech}
+                                </Badge>
+                              ))}
+                            </Flex>
+                          )}
+                        </Flex>
+                      </Card>
                     </RevealFx>
                   ))}
-                </Flex>
+                </Grid>
               </Flex>
             </RevealFx>
           )}
 
-          {/* Simple CTA section */}
+          {/* Simplified and elegant CTA section */}
           <RevealFx translateY="12" delay={0.4}>
-            <Flex
-              fillWidth
-              direction="column"
-              align="center"
-              gap="l"
-              paddingY="xl"
-              marginY="l"
-              background="surface-weak"
-              border="neutral-weak"
-              radius="m"
+            <Card
+              shadow="m"
+              radius="l"
+              padding="xl"
+              border="brand-weak"
+              style={{
+                marginY: "var(--spacing-xl)",
+                overflow: "hidden",
+                position: "relative",
+                background: "linear-gradient(135deg, var(--color-surface) 0%, var(--color-brand-alpha-weak) 100%)"
+              }}
             >
-              <Heading
-                variant="display-strong-s"
-                align="center"
-                style={{
-                  maxWidth: "700px",
+              {/* Decorative accent line at the top */}
+              <div 
+                style={{ 
+                  position: "absolute", 
+                  top: 0, 
+                  left: 0, 
+                  right: 0, 
+                  height: "4px", 
+                  background: "linear-gradient(90deg, var(--color-brand-medium) 0%, var(--color-brand-strong) 100%)"
                 }}
-              >
-                Ready to discuss your project?
-              </Heading>
-
-              <Button variant="primary" size="l" href="/contact" arrowIcon>
-                Contact Us
-              </Button>
-            </Flex>
+              />
+              
+              <Flex direction="column" gap="l" align="center">
+                <Heading
+                  variant="display-strong-m"
+                  align="center"
+                  style={{
+                    color: "var(--color-neutral-strong)",
+                    maxWidth: "700px",
+                  }}
+                >
+                  Let's Discuss Your Project
+                </Heading>
+                
+                <Text
+                  variant="body-default-l"
+                  align="center"
+                  style={{
+                    maxWidth: "600px",
+                    lineHeight: "1.7",
+                    color: "var(--color-neutral-medium)",
+                  }}
+                >
+                  Schedule a free consultation with our team and discover how we can help transform your business with our enterprise-grade web solutions.
+                </Text>
+                
+                <Button 
+                  variant="primary" 
+                  size="l" 
+                  href="/contact" 
+                  arrowIcon
+                  style={{
+                    marginTop: "var(--spacing-m)",
+                    minWidth: "220px"
+                  }}
+                >
+                  Book Consultation
+                </Button>
+              </Flex>
+            </Card>
           </RevealFx>
         </Column>
       </Flex>

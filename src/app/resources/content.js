@@ -176,38 +176,38 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        Web1.LK is a leading web solutions provider based in Sri Lanka, specializing in enterprise-grade applications, POS systems, and SaaS platforms. With our technical expertise and business acumen, we help organizations streamline operations, increase revenue, and deliver exceptional user experiences.
+        <span style={{ textAlign: 'justify', display: 'block' }}>
+          At <strong>Web1.LK</strong>, we're pioneering digital transformation across Sri Lanka and beyond. 
+          As a premier provider of enterprise-grade web solutions, we combine cutting-edge technology 
+          with deep business insights to create impactful digital experiences that deliver measurable results.
+          <br /><br />
+          Our team of expert developers, designers, and strategists work collaboratively to craft 
+          tailored solutions that address your unique business challenges and capitalize on emerging opportunities.
+        </span>
       </>
-    ),  },
+    ),
+  },
   work: {
     display: true,
-    title: "Our History",
-    experiences: [
+    title: "Our Journey",
+    description: "A brief timeline of Web1.LK's growth since our founding.",
+    milestones: [
       {
-        company: "Web1.LK Founded",
-        timeframe: "2018 - Present",
-        role: "Enterprise Web Solutions",
-        achievements: [
-          <>
-            Delivered over 50 enterprise web applications to clients across healthcare, retail, finance, and education sectors.
-          </>,
-          <>
-            Developed proprietary POS system framework that reduced implementation time by 60% while maintaining customization options.
-          </>,
-          <>
-            Established SaaS development division that has launched 5 successful subscription-based platforms.
-          </>,
-        ],
-        images: [
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Web1.LK Project",
-            width: 16,
-            height: 9,
-          },
-        ],
+        year: "2018",
+        title: "Founded in Colombo",
+        description: "Web1.LK was established to provide enterprise web solutions"
       },
-    ],
+      {
+        year: "2020",
+        title: "Service Expansion",
+        description: "Launched our POS and healthcare management platforms"
+      },
+      {
+        year: "2022",
+        title: "Regional Growth",
+        description: "Expanded operations across Sri Lanka with multiple industry partnerships"
+      }
+    ]
   },
   studies: {
     display: false, // Changed from true to false to hide the section
@@ -229,44 +229,49 @@ const about = {
   },
   technical: {
     display: true,
-    title: "Our Technology Stack",
+    title: "Our Technology Expertise",
+    subtitle: "We leverage best-in-class technologies to build scalable, secure, and high-performing solutions",
     skills: [
       {
-        title: "Frontend Development",
-        description: <>React, Next.js, Vue.js, and Angular with modern UI frameworks.</>,
-        images: [
-          {
-            src: "/images/projects/project-01/cover-02.jpg",
-            alt: "Frontend Development",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Frontend Architecture",
+        description: <>
+          <span style={{ textAlign: 'center', display: 'block' }}>
+            Modern, responsive interfaces built with React, Next.js, Vue.js, and Angular, 
+            delivering exceptional user experiences across all devices.
+          </span>
+        </>,
+        technologies: ["React", "Next.js", "Vue.js", "Angular", "TypeScript", "TailwindCSS", "Material UI"]
       },
       {
-        title: "Backend Infrastructure",
-        description: <>Node.js, Django, Laravel, and .NET with cloud-native architecture.</>,
-        images: [
-          {
-            src: "/images/projects/project-01/cover-03.jpg",
-            alt: "Backend Infrastructure",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Backend Systems",
+        description: <>
+          <span style={{ textAlign: 'center', display: 'block' }}>
+            Robust, scalable server architecture using Node.js, Django, Laravel, and .NET, 
+            with cloud-native approaches for maximum reliability and performance.
+          </span>
+        </>,
+        technologies: ["Node.js", "Python/Django", "PHP/Laravel", ".NET Core", "Express", "GraphQL", "REST APIs"]
       },
       {
-        title: "Database Solutions",
-        description: <>SQL and NoSQL databases with high-performance optimization.</>,
-        images: [
-          {
-            src: "/images/projects/project-01/cover-04.jpg",
-            alt: "Database Solutions",
-            width: 16,
-            height: 9,
-          },
-        ],
+        title: "Data Management",
+        description: <>
+          <span style={{ textAlign: 'center', display: 'block' }}>
+            Optimized database design and implementation with SQL and NoSQL solutions, 
+            ensuring data integrity, security, and high-speed access patterns.
+          </span>
+        </>,
+        technologies: ["MySQL", "MongoDB", "PostgreSQL", "Redis", "Elasticsearch", "Firebase", "Data Modeling"]
       },
+      {
+        title: "DevOps & Infrastructure",
+        description: <>
+          <span style={{ textAlign: 'center', display: 'block' }}>
+            Streamlined CI/CD pipelines with automated testing, containerization, and 
+            infrastructure-as-code for efficient deployment and scaling.
+          </span>
+        </>,
+        technologies: ["Docker", "Kubernetes", "AWS", "Azure", "CI/CD", "Terraform", "Security Hardening"]
+      }
     ],
   }
 };
